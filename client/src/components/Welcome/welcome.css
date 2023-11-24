@@ -1,8 +1,12 @@
 .welcome-header {
-    background-color: rgb(51, 51, 51, 0.8);
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
+  background-color: rgb(51, 51, 51, 0.8);
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.welcome-text {
+  letter-spacing: 4px;
 }

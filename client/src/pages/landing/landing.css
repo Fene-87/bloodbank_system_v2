@@ -1,4 +1,4 @@
-.landing-page {
+.landing-screen {
   background-image: url(../../assets/_Fallback.jpg);
   background-size: cover;
   background-position: inherit;
@@ -11,9 +11,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* background: rgb(171, 186, 171, 0.6);
-  background: -webkit-linear-gradient(to left, rgb(255, 255, 255, 0.7), rgb(171, 186, 171, 0.6));
-  background: linear-gradient(to left, rgb(255, 255, 255, 0.7), rgb(171, 186, 171, 0.6)); */
   background: #ffffff;
   background: -webkit-linear-gradient(to left, rgb( 39, 64, 70, 0.5), #ffffff);
   background: linear-gradient(to left, rgb( 39, 64, 70, 0.5), #ffffff);
@@ -23,12 +20,15 @@
   margin-top: 40px;
   width: 90%;
   height: fit-content;
+  /* position: fixed; */
 }
 
 .landing-container {
     padding: 15px 0;
     width: 90%;
     height: 70%;
+    /* border: 1px solid black; */
+    /* margin-top: 10rem; */
 }
 
 .landing-text {
@@ -50,19 +50,55 @@
   font-size: 18px;
 }
 
-.about-us {
-    border: 1px solid #d3d3d3;
-    padding: 15px;
+.landing-link {
+  text-decoration: none;
 }
 
-.landing-btns {
-
+.about-page {
+  background-color: #fff;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.services {
-  border: 1px solid #d3d3d3;
-  padding: 15px;
-  margin-top: 20px;
+.about-section {
+  height: 100%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-header {
+  margin-top: 10rem;
+  color: #c31432;
+  font-size: 50px;
+  letter-spacing: 3px;
+}
+
+.about-text {
+  margin-top: 3rem;
+  width: 50%;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+}
+
+.back-top {
+  align-self: end;
+  margin-top: 10rem;
+}
+
+.services-page {
+  height: 100vh;
+}
+
+.services-overlay {
+  height: 100%;
+  background: #ffffff;
+  background: -webkit-linear-gradient(to left, rgb( 39, 64, 70, 0.5), #ffffff);
+  background: linear-gradient(to left, rgb( 39, 64, 70, 0.5), #ffffff);
 }
 
 .contact-us {

@@ -22,15 +22,15 @@ const Navbar = ({ type }) => {
                   :
                   <>
                     <div className='navbar-links-section'>
-                      <NavLink to='/' onClick={() => handleClick(1)} className="navbar-link">
+                      <NavLink to='/home' onClick={() => handleClick(1)} className="navbar-link">
                         <li className={activeLink === 1 ? 'active-link' : 'link-text'}>Home</li>
                       </NavLink>
 
-                      <NavLink to='/' onClick={() => handleClick(2)} className="navbar-link">
+                      <NavLink to='/home' onClick={() => handleClick(2)} className="navbar-link">
                         <li className={activeLink === 2 ? 'active-link' : 'link-text'}>About Us</li>
                       </NavLink>
 
-                      <NavLink to='/' onClick={() => handleClick(3)} className="navbar-link">
+                      <NavLink to='/home' onClick={() => handleClick(3)} className="navbar-link">
                         <li className={activeLink === 3 ? 'active-link' : 'link-text'}>Services</li>
                       </NavLink>
 
