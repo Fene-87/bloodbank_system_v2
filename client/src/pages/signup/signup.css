@@ -1,0 +1,104 @@
+.signup-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #c94b4b;
+  background: -webkit-linear-gradient(to right, #4b134f, #c94b4b); 
+  background: linear-gradient(to right, #4b134f, #c94b4b);
+}
+
+.signup-form-bg {
+  width: 50%;
+  height: 90%;
+  background-image: url(../../assets/bloodd-bg.jpg);
+  background-size: cover;
+  background-position: center;
+  border: 3px solid #d3d3d3;
+  border-radius: 10px;
+  overflow: hidden;
+
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  width: 94%;
+  height: 100%;
+  background-color: rgb(4, 4, 41, 0.7);
+  padding: 20px 30px;
+  margin-right: 20px;
+}
+
+.signup-signin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.signup-header {
+  color: #fff;
+  border-bottom: 3px solid #fff;
+  width: fit-content;
+  padding-bottom: 5px;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+
+.signin-header-dark {
+  color: #c94b4b;
+  width: fit-content;
+  padding-bottom: 5px;
+  letter-spacing: 3px;
+}
+
+.reg-input-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.reg-label {
+  color: #fff;
+  letter-spacing: 3px;
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-left: 10px;
+}
+
+.input-div {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.reg-input {
+  border: none;
+  border-radius: 15px;
+  outline: none;
+  padding: 8px;
+  font-size: 15px;
+  background-color: rgb(4, 4, 41, 0.7);
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+.error-message {
+  color: #c94b4b;
+  margin-left: 10px;
+}
+
+.register-btn {
+  margin-top: 20px;
+  padding: 8px;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+}
+
+.register-btn:hover {
+  background-color: rgb(7, 7, 27);
+  color: #fff;
+}

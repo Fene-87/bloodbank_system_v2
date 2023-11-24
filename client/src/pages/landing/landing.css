@@ -1,0 +1,72 @@
+.landing-page {
+  background-image: url(../../assets/_Fallback.jpg);
+  background-size: cover;
+  background-position: inherit;
+  height: 100vh;
+  overflow: auto;
+}
+
+.landing-gradient {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background: rgb(171, 186, 171, 0.6);
+  background: -webkit-linear-gradient(to left, rgb(255, 255, 255, 0.7), rgb(171, 186, 171, 0.6));
+  background: linear-gradient(to left, rgb(255, 255, 255, 0.7), rgb(171, 186, 171, 0.6)); */
+  background: #ffffff;
+  background: -webkit-linear-gradient(to left, rgb( 39, 64, 70, 0.5), #ffffff);
+  background: linear-gradient(to left, rgb( 39, 64, 70, 0.5), #ffffff);
+}
+
+.welcome-navbar {
+  margin-top: 40px;
+  width: 90%;
+  height: fit-content;
+}
+
+.landing-container {
+    padding: 15px 0;
+    width: 90%;
+    height: 70%;
+}
+
+.landing-text {
+  margin-top: 6rem;
+  font-size: 80px;
+  font-weight: bolder;
+  letter-spacing: 2px;
+}
+
+.landing-btn {
+  background-color: #c31432;
+  width: 10rem;
+  border: 3px solid #ffffff;
+  margin-top: 5rem;
+  cursor: pointer;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.about-us {
+    border: 1px solid #d3d3d3;
+    padding: 15px;
+}
+
+.landing-btns {
+
+}
+
+.services {
+  border: 1px solid #d3d3d3;
+  padding: 15px;
+  margin-top: 20px;
+}
+
+.contact-us {
+  border: 1px solid #d3d3d3;
+  padding: 15px;
+  margin-top: 20px;
+}

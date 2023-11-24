@@ -1,0 +1,16 @@
+.sidebar-container {
+    background-color: rgb(236, 60, 60);
+    width: 20%;
+}
+
+.sidebar-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    color: #fff;
+    padding: 10px 0;
+    list-style: none;
+    font-size: 18px;
+    background-color: pink;
+}
