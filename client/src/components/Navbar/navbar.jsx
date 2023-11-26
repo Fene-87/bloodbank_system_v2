@@ -26,13 +26,13 @@ const Navbar = ({ type }) => {
                         <li className={activeLink === 1 ? 'active-link' : 'link-text'}>Home</li>
                       </NavLink>
 
-                      <NavLink to='/home' onClick={() => handleClick(2)} className="navbar-link">
+                      <a href='#about' onClick={() => handleClick(2)} className="navbar-link">
                         <li className={activeLink === 2 ? 'active-link' : 'link-text'}>About Us</li>
-                      </NavLink>
+                      </a>
 
-                      <NavLink to='/home' onClick={() => handleClick(3)} className="navbar-link">
+                      <a href='#services' onClick={() => handleClick(3)} className="navbar-link">
                         <li className={activeLink === 3 ? 'active-link' : 'link-text'}>Services</li>
-                      </NavLink>
+                      </a>
 
                       <NavLink to='/donate' onClick={() => handleClick(4)} className="navbar-link">
                         <li className={activeLink === 4 ? 'active-link' : 'link-text'}>Donate blood</li>
@@ -41,8 +41,13 @@ const Navbar = ({ type }) => {
                       <NavLink to='/recipient' onClick={() => handleClick(5)} className="navbar-link">
                         <li className={activeLink === 5 ? 'active-link' : 'link-text'}>Recipients</li>
                       </NavLink>
+
+                      <a href='#contact' onClick={() => handleClick(6)} className="navbar-link">
+                        <li className={activeLink === 6 ? 'active-link' : 'link-text'}>Contact us</li>
+                      </a>
                     </div>
-                    <NavLink to='/admin' className="navbar-link">
+
+                    <NavLink to='/adminlogin' className="navbar-link">
                       <p className='navbar-admin'>Admin</p>
                     </NavLink>
                   </>

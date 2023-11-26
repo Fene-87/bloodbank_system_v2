@@ -7,7 +7,7 @@ const Landing = () => {
     return (
         <div className="landing-page">
             <div className="landing-screen">
-                <div className="landing-gradient">
+                <div className="landing-gradient" id="home">
                     <div className="welcome-navbar">
                       <Welcome />
                       <Navbar type="home"/>
@@ -23,7 +23,7 @@ const Landing = () => {
                     </div>
                 </div>
 
-                <div className="about-page">
+                <div className="about-page" id="about">
                     <div className="about-section">
                         <h2 className="about-header">About us</h2>
                         <p className="about-text">
@@ -32,13 +32,33 @@ const Landing = () => {
                           need. Our mission is to save lives through blood donations 
                           and efficient management of blood resources.
                         </p>
-                        <p className="back-top">Back to top</p>
+                        <a href="#home" className="landing-link">
+                            <p className="back-top">Back to top</p>
+                        </a>
                     </div>
                 </div>
 
-                <div className="services-page">
+                <div className="services-page" id="services">
                     <div className="services-overlay">
                         <h2 className="services-header">Services</h2>
+                    </div>
+                </div>
+
+                <div className="contact-page" id="contact">
+                    <div className="contact-overlay">
+                        <div className="contact-info">
+                            <p className="contact-text">
+                                If you have any questions or require assistance, 
+                                please do not hesitate to contact us.
+                           </p>
+                           <p className="contact-digit">
+                                Call now: 0799641447
+                           </p>
+                        </div>
+                        
+                        <footer className="footer">
+                            <p className="footer-text">Copyright &copy; 2023 Save Lifes. All rights reserved</p>
+                        </footer>
                     </div>
                 </div>
             </div>

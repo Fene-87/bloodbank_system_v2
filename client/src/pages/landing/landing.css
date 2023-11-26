@@ -4,6 +4,7 @@
   background-position: inherit;
   height: 100vh;
   overflow: auto;
+  scroll-behavior: smooth;
 }
 
 .landing-gradient {
@@ -86,8 +87,7 @@
 }
 
 .back-top {
-  align-self: end;
-  margin-top: 10rem;
+  color: #333;
 }
 
 .services-page {
@@ -99,10 +99,73 @@
   background: #ffffff;
   background: -webkit-linear-gradient(to left, rgb( 39, 64, 70, 0.5), #ffffff);
   background: linear-gradient(to left, rgb( 39, 64, 70, 0.5), #ffffff);
+  /* border: 1px solid white; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.contact-us {
-  border: 1px solid #d3d3d3;
-  padding: 15px;
-  margin-top: 20px;
+.services-header {
+  margin-top: 10rem;
+  color: #c31432;
+  font-size: 50px;
+  letter-spacing: 3px;
+}
+
+.contact-page {
+  height: 100vh;
+}
+
+.contact-overlay {
+  height: 100%;
+  width: 100%;
+  background-color: rgb(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contact-info {
+  border: 8px solid #c31432;
+  width: 80%;
+  height: 50%;
+  margin-top: 8rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-text {
+  text-align: center;
+  font-size: 22px;
+  letter-spacing: 2px;
+  width: 60%;
+}
+
+.contact-digit {
+  font-size: 40px;
+  letter-spacing: 3px;
+  margin-top: 2rem;
+  font-weight: bolder;
+}
+
+.footer {
+  background-color: black;
+  width: 100%;
+  padding: 20px 0;
+  color: #fff;
+}
+
+.footer-text {
+  text-align: center;
+  letter-spacing: 3px;
+}
+
+.landing-link {
+  text-decoration: none;
+  align-self: end;
+  margin-top: 10rem;
 }
