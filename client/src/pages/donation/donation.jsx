@@ -3,13 +3,40 @@ import Axios from 'axios';
 import './donation.css'
 
 const Donation = () => {
-  
-  
 
     return (
-        <div>
+        <div className="donation-page">
             <Navbar type='home' />
-            <div className="form-container">
+            <div className="donate-form-container">
+              <form className="donate-form">
+                <div className="donate-blood-grp">
+                  <label>Select your blood group</label>
+                  <input type="text" placeholder="Choose the appropriate one" />
+                </div>
+
+                <div className="donate-details">
+                  <h2>Details</h2>
+
+                  <div>
+                    <label>First name</label>
+                    <input type="text" placeholder="First Name" />
+                    
+                    <label>Last name</label>
+                    <input type="text" placeholder="Last Name" />
+                  </div>
+
+                  <div>
+                    <label>Email</label>
+                    <input type="email" placeholder="Email" />
+
+                    <label>Address</label>
+                    <input type="text" placeholder="Address" />
+                  </div>
+                  <div></div>
+                </div>
+              </form>
+            </div>
+            {/* <div className="form-container">
               <div className="form-gradient">
                 <form className="donate-form">
                   Give your donation
@@ -26,7 +53,7 @@ const Donation = () => {
                   <input type="submit" value=" Book Appointment" />
                 </form>
               </div>
-           </div>
+           </div> */}
         </div>
     )
 }
