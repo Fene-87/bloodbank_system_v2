@@ -1,32 +1,61 @@
 import { useState } from "react";
+import Axios from 'axios';
+import { useForm } from 'react-hook-form';
+import { DevTool } from '@hookform/devtools';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import './adminlogin.css';
 
 
 const AdminLogin = () => {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-     const login = () => {
-       Axios.post("http://localhost:3001/create", {
-           username:username,
-            password: password,
-        }).then(() => {
-         console.log('login');
-     });
-    }
+    const { register, control, handleSubmit, formState } = useForm();
+    const { errors } = formState;
+
+    const navigate = useNavigate();
+
+    const onSubmit = (data) => {
+        try {
+            Axios.post("http://localhost:3001/adminsignin", {
+              email: data.email,
+              password: data.password,
+            }).then((response) => {
+              if(response.data.message) {
+                alert(response.data.message)
+                console.log(response.data.message)
+              } else {
+                console.log(response)
+                navigate('/admin');
+              }
+            });
+        } catch (error) {
+            throw(error);
+        }
+    };
+
     return (
         <div>
             <h1>Enter your details</h1>
             {/* Your logic */}
-            <form className='adminlogin-form'>
-                <label>username:</label>
-                <input type="username" name="username" placeholder='Username' onChange={(e) => setUsername(e.target.value)} />
+            <form onSubmit={handleSubmit(onSubmit)} className='adminlogin-form'>
+                <label>Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  {...register("email")}
+                  placeholder='Admin Email'
+                />
                 
                 <label>Password:</label>
-                <input type="text" name="password" placeholder='Password' onChange={(e) => setPassword(e.target.value)} />
+                <input
+                  type="password"
+                  id="password"
+                  {...register("password")}
+                  placeholder='Password'
+                />
 
-                <input type="submit" value="Login" onClick={AdminLogin}/>
-                </form>
+                <button type="submit">Admin login</button>
+            </form>
+            <DevTool control={control} />
         </div>
     )
 }

@@ -70,6 +70,31 @@ app.post('/signin', async (req, res) => {
     )
 })
 
+app.post('/adminsignin', async (req, res) => {
+    const email = req.body.email;
+    const password = req.body.password;
+
+    db.query(
+        "SELECT * FROM users WHERE email = ? AND role = 'admin'",
+        [email],
+        async (err, result) => {
+            if(err) {
+                res.send({ err: err });
+            } else if(result.length > 0){
+               const isPasswordCorrect = await bcrypt.compare(password, result[0].password);
+               if (!isPasswordCorrect) {
+                res.send({ message: 'Incorrect Password' });
+               } else {
+                res.send(result);
+                console.log(result);
+               }
+            } else {
+                res.send({ message: 'Acces denied! You are not authorized!' });
+            }
+        }
+    )
+})
+
 
 app.listen(3001, () => {
     console.log("Your server is up and running");
