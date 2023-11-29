@@ -95,6 +95,28 @@ app.post('/adminsignin', async (req, res) => {
     )
 })
 
+app.post('/requestdonate', async (req, res) => {
+    const bloodGroup = req.body.bloodGroup;
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const email = req.body.email;
+    const contact = req.body.contact;
+    const date = req.body.date;
+    const location = req.body.location;
+
+    db.query(
+        'INSERT INTO donation_requests (blood_group, first_name, last_name, email, contact, scheduled_date, location) VALUES (?,?,?,?,?,?,?)',
+        [bloodGroup, firstName, lastName, email, contact, date, location],
+        async (err, result) => {
+            if(err) {
+              console.log(err)
+            } else {
+                res.send("Your request to donate blood has been received.");
+            }
+        }
+    )
+})
+
 
 app.listen(3001, () => {
     console.log("Your server is up and running");

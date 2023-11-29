@@ -3,25 +3,69 @@ import Axios from 'axios';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useForm } from 'react-hook-form';
-import { DevTool } from '@hookform/devtools';
 import './donation.css'
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 const Donation = () => {
-    const [selectedDate, setDate] = useState(null);
-    const [selectedTime, setTime] = useState(null);
+    const navigate = useNavigate();
 
-    const { register, control, handleSubmit, formState } = useForm();
+    const [selectedDate, setDate] = useState(null);
+    const formattedDate = selectedDate?.toISOString().split('T')[0];
+
+    const bloodData = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
+
+    const hospitals = [
+      "Nairobi Hospital, Nairobi",
+      "Aga Khan University Hospital, Parklands",
+      "Kenyatta National Hospital, Nairobi",
+      "Mombasa Hospital, Mombasa",
+      "Avenue Hospital, Kisumu",
+      "Mediheal Hospital, Nakuru"
+    ];
+
+    const { register, handleSubmit, formState } = useForm();
     const { errors } = formState;
+
+    const onSubmit = (data) => {
+      try {
+        Axios.post("http://localhost:3001/requestdonate", {
+          bloodGroup: data.bloodGroup,
+          firstName: data.firstName,
+          lastName: data.lastName,
+          email: data.email,
+          contact: data.contact,
+          date: formattedDate,
+          location: data.location,
+        }).then(() => {
+            alert('Your request to donate blood has been received.');
+            navigate('/donate')
+        })
+      } catch (error) {
+        throw(error);
+      }
+    }
 
     return (
         <div className="donation-page">
-            <Navbar type='home' />
+            <Navbar type='donate' />
             <div className="donate-form-container">
-              <form className="donate-form">
+              <form onSubmit={handleSubmit(onSubmit)} className="donate-form">
                 <div className="donate-blood-grp">
-                  <label>Select your blood group</label>
-                  <input type="text" placeholder="Choose the appropriate one" />
+                  <label className="bloodgrp-label">Select your blood group</label>
+                  <input 
+                    type="text"
+                    id="bloodgroup"
+                    list="data"
+                    {...register("bloodGroup")}
+                    placeholder="Choose the appropriate one"
+                    className="donate-input"
+                  />
+                  <datalist id="data">
+                    {bloodData.map((blood, index) => (
+                      <option key={index}>{blood}</option>
+                    ))}
+                  </datalist>
                 </div>
 
                 <div className="donate-details">
@@ -39,6 +83,7 @@ const Donation = () => {
                         }
                       })}
                       placeholder="First Name"
+                      className="donate-input input-width"
                     />
                     
                     <label className="donate-label">Last name</label>
@@ -52,6 +97,7 @@ const Donation = () => {
                         }
                       })}
                       placeholder="Last Name"
+                      className="donate-input input-width"
                     />
                   </div>
 
@@ -67,6 +113,7 @@ const Donation = () => {
                         }
                       })}
                       placeholder="Email"
+                      className="donate-input input-width"
                     />
 
                     <label className="donate-label">Contact</label>
@@ -80,16 +127,26 @@ const Donation = () => {
                         }
                       })}
                       placeholder="Contact"
+                      className="donate-input input-width"
                     />
                   </div>
 
                   <div className="details-section">
-                    <DatePicker selected={selectedDate} onChange={date => setDate(date)} placeholderText="Schedule a date"/>
+                    <DatePicker
+                      id="date"
+                      {...register("date")}
+                      selected={selectedDate}
+                      onChange={date => setDate(date)}
+                      placeholderText="Schedule a date"
+                      required
+                      className="donate-input input-width"
+                    />
 
                     <label className="donate-label">Location</label>
                     <input 
                       type="text"
                       id="location"
+                      list="hospitallist"
                       {...register("location", {
                         required: {
                           value: true,
@@ -97,32 +154,19 @@ const Donation = () => {
                         }
                       })}
                       placeholder="Location"
+                      className="donate-input input-width"
                     />
+                    <datalist id="hospitallist">
+                      {hospitals.map((hospital, index) => (
+                        <option key={index}>{hospital}</option>
+                      ))}
+                    </datalist>
                   </div>
 
                    <button className="donation-request">Request to donate</button>
                 </div>
               </form>
-              <DevTool control={control} />
             </div>
-            {/* <div className="form-container">
-              <div className="form-gradient">
-                <form className="donate-form">
-                  Give your donation
-                  <label>Name:</label>
-                  <input type="text" name="donorsname" /> 
-                  <label>Donors Contact:</label>
-                  <input type="text" name="contact"   />
-                  <label>Blood Group:</label>
-                  <input type="text" name="blood group"  />
-                  <label>Age:</label>
-                  <input type="number" name="age"  />
-                  <label>Location:</label>
-                  <input type="text" name="location" />
-                  <input type="submit" value=" Book Appointment" />
-                </form>
-              </div>
-           </div> */}
         </div>
     )
 }

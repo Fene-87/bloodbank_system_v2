@@ -26,6 +26,22 @@
   list-style: none;
 }
 
+.donate-links-section {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  color: #333;
+  list-style: none;
+}
+
+.schedule-header {
+  font-size: 22px;
+  color: #c31432;
+  letter-spacing: 3px;
+  font-weight: bolder;
+}
+
 .navbar-link {
   text-decoration: none;
 }

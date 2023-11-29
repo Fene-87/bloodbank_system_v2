@@ -19,7 +19,7 @@ const Navbar = ({ type }) => {
                     <li>Appointments</li>
                     <li>Requests</li>
                   </>
-                  :
+                  : type === 'home' ?
                   <>
                     <div className='navbar-links-section'>
                       <NavLink to='/home' onClick={() => handleClick(1)} className="navbar-link">
@@ -51,6 +51,20 @@ const Navbar = ({ type }) => {
                       <p className='navbar-admin'>Admin</p>
                     </NavLink>
                   </>
+                  :
+                  <div className='donate-links-section'>
+                    <div>
+                      <NavLink to='/home' onClick={() => handleClick(1)} className="navbar-link">
+                        <li className={activeLink === 1 ? 'active-link' : 'link-text'}>Home</li>
+                      </NavLink>
+                    </div>
+
+                    <p className='schedule-header'>Schedule your donation</p>
+
+                    <NavLink to='/adminlogin' className="navbar-link">
+                      <p className='navbar-admin'>Admin</p>
+                    </NavLink>
+                  </div>
                 }
             </ul>
         </div>
