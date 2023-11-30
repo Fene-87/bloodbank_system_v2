@@ -5,27 +5,29 @@ const Sidebar = ({ type }) => {
     return (
         <div className="sidebar-container">
             <ul className='sidebar-items'>
-            <NavLink to='/landing'>
-                <li>Home</li>
-                </NavLink>
-                <li>Donors</li>
+              <NavLink to='/landing' className="sidebar-link">
+                <li>Overview</li>
+              </NavLink>
+
+              <NavLink to='/landing' className="sidebar-link">
+                <li>Donation requests</li>
+              </NavLink>
+
+              <NavLink to='/landing' className="sidebar-link">
                 <li>Blood Donations</li>
-                <NavLink to='/requests'>
-                <li>Requests</li>
-                </NavLink>
-                <li>Handed Over</li>
+              </NavLink>
+
+              <NavLink to='/requests' className="sidebar-link">
+                <li>Blood requests</li>
+              </NavLink>
+
+              <NavLink to='/landing' className="sidebar-link">
+                <li>Completed transactions</li>
+              </NavLink>
+
+              <NavLink to='/landing' className="sidebar-link">
                 <li>Users</li>
-                    {/* <NavLink to='/'>
-                      <li>Home</li>
-                    </NavLink>
-
-                    <NavLink to='/donate'>
-                      <li>Donate blood</li>
-                    </NavLink>
-
-                    <NavLink to='/recipient'>
-                      <li>Recipients</li>
-                    </NavLink> */}
+              </NavLink>
             </ul>
         </div>
     )

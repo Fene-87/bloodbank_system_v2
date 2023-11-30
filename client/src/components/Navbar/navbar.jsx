@@ -39,7 +39,7 @@ const Navbar = ({ type }) => {
                       </NavLink>
 
                       <NavLink to='/recipient' onClick={() => handleClick(5)} className="navbar-link">
-                        <li className={activeLink === 5 ? 'active-link' : 'link-text'}>Recipients</li>
+                        <li className={activeLink === 5 ? 'active-link' : 'link-text'}>Request Blood</li>
                       </NavLink>
 
                       <a href='#contact' onClick={() => handleClick(6)} className="navbar-link">
