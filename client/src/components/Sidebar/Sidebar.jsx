@@ -10,7 +10,7 @@ const Sidebar = ({ type }) => {
               </NavLink>
 
               <NavLink to='/landing' className="sidebar-link">
-                <li>Donation requests</li>
+                <li>Scheduled donations</li>
               </NavLink>
 
               <NavLink to='/landing' className="sidebar-link">

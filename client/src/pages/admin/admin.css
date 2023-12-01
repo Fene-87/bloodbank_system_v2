@@ -1,5 +1,23 @@
 .admin-container {
-    display: flex;
-    min-height: 100vh;
-    
+  display: flex;
+  height: 100vh;
+}
+
+.overview-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 2rem;
+}
+
+.blood-groups {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.bloodgrp-stats {
+  border: 3px solid #d3d3d3;
+  height: 10rem;
 }
