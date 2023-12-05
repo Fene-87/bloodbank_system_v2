@@ -71,3 +71,11 @@
   border: 3px solid #fff;
   background-color: #333;
 }
+
+.admin-login-header {
+  margin: auto;
+  font-size: 22px;
+  color: #c31432;
+  letter-spacing: 3px;
+  font-weight: bolder;
+}

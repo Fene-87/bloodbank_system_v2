@@ -117,6 +117,40 @@ app.post('/requestdonate', async (req, res) => {
     )
 })
 
+app.post('/requestblood', async (req, res) => {
+    const bloodGroup = req.body.bloodGroup;
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const email = req.body.email;
+    const location = req.body.location;
+    const reason = req.body.reason;
+
+    db.query(
+        'INSERT INTO blood_requests (blood_group, first_name, last_name, email, location, reason) VALUES (?,?,?,?,?,?)',
+        [bloodGroup, firstName, lastName, email, location, reason],
+        async (err, result) => {
+            if(err) {
+              console.log(err)
+            } else {
+                res.send("Your request for blood has been received.");
+            }
+        }
+    )
+})
+
+app.get('/scheduled-donations', (req, res) => {
+    db.query(
+        'SELECT * FROM donation_requests',
+        async (err, result) => {
+            if(err) {
+                res.send({ err: err })
+            } else {
+                res.send(result)
+            }
+        }
+    )
+})
+
 
 app.listen(3001, () => {
     console.log("Your server is up and running");

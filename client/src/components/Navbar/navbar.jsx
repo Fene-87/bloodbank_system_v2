@@ -51,7 +51,7 @@ const Navbar = ({ type }) => {
                       <p className='navbar-admin'>Admin</p>
                     </NavLink>
                   </>
-                  :
+                  : type === 'donate' ?
                   <div className='donate-links-section'>
                     <div>
                       <NavLink to='/home' onClick={() => handleClick(1)} className="navbar-link">
@@ -64,6 +64,34 @@ const Navbar = ({ type }) => {
                     <NavLink to='/adminlogin' className="navbar-link">
                       <p className='navbar-admin'>Admin</p>
                     </NavLink>
+                  </div>
+                  : type === 'request' ?
+                  <div className='donate-links-section'>
+                    <div>
+                      <NavLink to='/home' onClick={() => handleClick(1)} className="navbar-link">
+                        <li className={activeLink === 1 ? 'active-link' : 'link-text'}>Home</li>
+                      </NavLink>
+                    </div>
+
+                    <p className='schedule-header'>Request for blood</p>
+
+                    <NavLink to='/adminlogin' className="navbar-link">
+                      <p className='navbar-admin'>Admin</p>
+                    </NavLink>
+                  </div>
+                  :
+                  <div className='donate-links-section'>
+                    <div>
+                      <NavLink to='/home' onClick={() => handleClick(1)} className="navbar-link">
+                        <li className={activeLink === 1 ? 'active-link' : 'link-text'}>Home</li>
+                      </NavLink>
+                    </div>
+
+                    <p className='admin-login-header'>Are you an Admin?</p>
+
+                    {/* <NavLink to='/adminlogin' className="navbar-link">
+                      <p className='navbar-admin'>Admin</p>
+                    </NavLink> */}
                   </div>
                 }
             </ul>

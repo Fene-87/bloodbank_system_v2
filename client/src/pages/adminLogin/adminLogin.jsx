@@ -5,6 +5,7 @@ import { DevTool } from '@hookform/devtools';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 import './adminlogin.css';
+import Navbar from "../../components/Navbar/navbar";
 
 
 const AdminLogin = () => {
@@ -33,29 +34,40 @@ const AdminLogin = () => {
     };
 
     return (
-        <div>
-            <h1>Enter your details</h1>
+        <div className="admin-login-page">
+            <Navbar type="admin-login" />
+            <div className="admin-login-container">
+            
             {/* Your logic */}
             <form onSubmit={handleSubmit(onSubmit)} className='adminlogin-form'>
-                <label>Email</label>
+                <div className="admin-signin-form">
+                <h1 className="adminlogin-header">Enter your Credentials</h1>
+                <div className="input-container">
+                <label htmlFor="email" className='label'>EMAIL</label>
                 <input
                   type="email"
                   id="email"
                   {...register("email")}
                   placeholder='Admin Email'
+                  className='input'
                 />
+                </div>
                 
-                <label>Password:</label>
+                <div className="input-container">
+                <label htmlFor="password" className='label'>PASSWORD</label>
                 <input
                   type="password"
                   id="password"
                   {...register("password")}
                   placeholder='Password'
+                  className='input'
                 />
+                </div>
 
-                <button type="submit">Admin login</button>
+                <button type="submit" className="admin-signin-btn">Admin login</button>
+                </div>
             </form>
-            <DevTool control={control} />
+            </div>
         </div>
     )
 }

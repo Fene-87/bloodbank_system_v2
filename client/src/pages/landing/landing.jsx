@@ -1,9 +1,23 @@
-import { NavLink } from "react-router-dom"
-import Navbar from "../../components/Navbar/navbar"
-import Welcome from "../../components/Welcome/Welcome"
-import './landing.css'
+import { NavLink } from "react-router-dom";
+import Navbar from "../../components/Navbar/navbar";
+import Welcome from "../../components/Welcome/Welcome";
+import './landing.css';
 
 const Landing = () => {
+    const servicesData = [
+        {
+            name: "Donor Registration",
+            description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.Ea sapiente alias perspiciatis sint voluptatem. Voluptatibus, tempore. Corrupti tempore quam explicabo temporibus, beatae nostrum quaerat magni ipsum provident sed error saepe."
+        },
+        {
+            name: "Recipient Requests",
+            description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.Ea sapiente alias perspiciatis sint voluptatem. Voluptatibus, tempore. Corrupti tempore quam explicabo temporibus, beatae nostrum quaerat magni ipsum provident sed error saepe."
+        },
+        {
+            name: "Appointment Scheduling",
+            description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.Ea sapiente alias perspiciatis sint voluptatem. Voluptatibus, tempore. Corrupti tempore quam explicabo temporibus, beatae nostrum quaerat magni ipsum provident sed error saepe."
+        },
+    ]
     return (
         <div className="landing-page">
             <div className="landing-screen">
@@ -41,6 +55,19 @@ const Landing = () => {
                 <div className="services-page" id="services">
                     <div className="services-overlay">
                         <h2 className="services-header">Services</h2>
+                        <div className="services-cards">
+                            {servicesData.map((service) => (
+                                <div className="service-card">
+                                    <h2 className="card-header">{service.name}</h2>
+                                    <p className="card-text">{service.description}</p>
+                                </div>
+                            ))}
+                        </div>
+                        <div className="link-position">
+                          <a href="#home" className="landing-link">
+                            <p className="back-top">Back to top</p>
+                          </a>
+                        </div>
                     </div>
                 </div>
 
@@ -58,6 +85,11 @@ const Landing = () => {
                         
                         <footer className="footer">
                             <p className="footer-text">Copyright &copy; 2023 Save Lifes. All rights reserved</p>
+                            <div className="footer-link-div">
+                            <a href="#home" className="footer-link">
+                              <p className="footer-link-text">T</p>
+                            </a>
+                            </div>
                         </footer>
                     </div>
                 </div>
@@ -67,12 +99,3 @@ const Landing = () => {
 }
 
 export default Landing;
-
-{/* 
-    <h2>Our Services</h2>
-    <ul>
-        <li>Donor Registration</li>
-        <li>Recipient Requests</li>
-        <li>Appointment Scheduling</li>
-    </ul>
-*/}

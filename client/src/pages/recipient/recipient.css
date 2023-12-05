@@ -26,3 +26,16 @@
     align-items: center;
     justify-content: center;
   }
+
+  .reason-section {
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .recipient-input-width {
+    width: 30rem;
+    display: flex;
+    justify-content: center;
+  }

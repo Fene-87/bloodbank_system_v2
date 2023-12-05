@@ -1,37 +1,173 @@
-import Navbar from "../../components/Navbar/navbar"
-import './recipient.css'
+import Navbar from "../../components/Navbar/navbar";
+import Axios from 'axios';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { useForm } from 'react-hook-form';
+import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import './recipient.css';
 
 const Recipient = () => {
+    const navigate = useNavigate();
+
+    const [selectedDate, setDate] = useState(null);
+    const formattedDate = selectedDate?.toISOString().split('T')[0];
+
+    const bloodData = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
+
+    const hospitals = [
+      "Nairobi Hospital, Nairobi",
+      "Aga Khan University Hospital, Parklands",
+      "Kenyatta National Hospital, Nairobi",
+      "Mombasa Hospital, Mombasa",
+      "Avenue Hospital, Kisumu",
+      "Mediheal Hospital, Nakuru"
+    ];
+
+    const { register, handleSubmit, formState } = useForm();
+    const { errors } = formState;
+
+    const onSubmit = (data) => {
+        try {
+          Axios.post("http://localhost:3001/requestblood", {
+            bloodGroup: data.bloodGroup,
+            firstName: data.firstName,
+            lastName: data.lastName,
+            email: data.email,
+            // contact: data.contact,
+            location: data.location,
+            reason: data.reason,
+          }).then(() => {
+              alert('Your request to donate blood has been received.');
+              navigate('/donate')
+          })
+        } catch (error) {
+          throw(error);
+        }
+    }
+
     return (
-        <div>
-            {/* {<form className="donate-form">
-                  Check Availability
-                  <label>Name:</label>
-                  <input type="text" name="name" />
-                  <label>Blood Type:</label>
-                  <input type="text" name="blood" />
-                  <label>Location:</label>
-                  <input type="text" name="location" />
-                  <input type="submit" value="Submit" />
-                </form> } */}
-            <form className='recipient-form'>
-                Request
-                <label>patient id:</label>
-                <input type="varchar" name="patient-id" placeholder='Patient id' onChange={(e) => setPatientId(e.target.value)} />
+        <div className="donation-page">
+            <Navbar type='request' />
+            <div className="donate-form-container">
+              <form onSubmit={handleSubmit(onSubmit)} className="donate-form">
+                <div className="donate-blood-grp">
+                  <label className="bloodgrp-label">Select your blood group</label>
+                  <input 
+                    type="text"
+                    id="bloodgroup"
+                    list="data"
+                    {...register("bloodGroup")}
+                    placeholder="Choose the appropriate one"
+                    className="donate-input"
+                  />
+                  <datalist id="data">
+                    {bloodData.map((blood, index) => (
+                      <option key={index}>{blood}</option>
+                    ))}
+                  </datalist>
+                </div>
 
-                <label>Blood Type:</label>
-                <input type="text" name="blood-type" placeholder='Blood Type' onChange={(e) => setBloodType(e.target.value)} />
+                <div className="donate-details">
+                  <h2 className="details-header">Details</h2>
 
-                <label>Age:</label>
-                <input type="number" name="age" placeholder='Age' onChange={(e) => setAge(e.target.value)} />
+                  <div className="details-section">
+                    <label className="donate-label">First name</label>
+                    <input
+                      type="text"
+                      id="firstname"
+                      {...register("firstName", {
+                        required: {
+                          value: true,
+                          message: "Field cannot be blank!",
+                        }
+                      })}
+                      placeholder="First Name"
+                      className="donate-input input-width"
+                    />
+                    
+                    <label className="donate-label">Last name</label>
+                    <input
+                      type="text"
+                      id="lastname"
+                      {...register("lastName", {
+                        required: {
+                          value: true,
+                          message: "Field cannot be blank!",
+                        }
+                      })}
+                      placeholder="Last Name"
+                      className="donate-input input-width"
+                    />
+                  </div>
 
-                <label>hospital id:</label>
-                <input type="varchar" name="hospital-id" placeholder='Hospital id' onChange={(e) => setHospitalId(e.target.value)} />
+                  <div className="details-section">
+                    <label className="donate-label">Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      {...register("email", {
+                        required: {
+                          value: true,
+                          message: "Field cannot be blank!",
+                        }
+                      })}
+                      placeholder="Email"
+                      className="donate-input input-width"
+                    />
 
-                <input type="submit" value="Submit" />
-                </form>
+                    {/* <label className="donate-label">Contact</label>
+                    <input
+                      type="text"
+                      id="contact"
+                      {...register("contact", {
+                        required: {
+                          value: true,
+                          message: "Field cannot be blank!",
+                        }
+                      })}
+                      placeholder="Contact"
+                      className="donate-input input-width"
+                    /> */}
+
+                    <label className="donate-label">Location</label>
+                    <input 
+                      type="text"
+                      id="location"
+                      list="hospitallist"
+                      {...register("location", {
+                        required: {
+                          value: true,
+                          message: "Field cannot be blank!",
+                        }
+                      })}
+                      placeholder="Location"
+                      className="donate-input input-width"
+                    />
+                    <datalist id="hospitallist">
+                      {hospitals.map((hospital, index) => (
+                        <option key={index}>{hospital}</option>
+                      ))}
+                    </datalist>
+                  </div>
+
+                  <div className="reason-section">
+                    <label className="donate-label">Reason</label>
+                    <textarea 
+                      type="text"
+                      id="reason"
+                      {...register("reason")}
+                      placeholder="Enter your reason (255 characters)"
+                      className="donate-input recipient-input-width"
+                    />
+                  </div>
+
+                   <button className="donation-request">Request to donate</button>
+                </div>
+              </form>
+            </div>
         </div>
     )
 }
 
-export default Recipient
+export default Recipient;

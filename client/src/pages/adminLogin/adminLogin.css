@@ -1,13 +1,57 @@
-.adminlogin-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color:red;
-  }
+.admin-login-page {
+  height: 100vh;
+  background: #c94b4b;
+  background: -webkit-linear-gradient(to right, #4b134f, #c94b4b); 
+  background: linear-gradient(to right, #4b134f, #c94b4b);
+}
+
+.admin-login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 90%;
+  /* width: 100%; */
+}
+
+.adminlogin-header {
+  margin-top: 30px;
+  color: #fff;
+  padding-bottom: 5px;
+  letter-spacing: 3px;
+}
   
-  .adminlogin-form {
-    display: flex;
-    flex-direction: column;
-    width: 25%;
-  }
+.adminlogin-form {
+  min-width: 40%;
+  height: 80%;
+  background-image: url(../../assets/bloodd-bg.jpg);
+  background-size: cover;
+  background-position: center;
+  border: 3px solid #d3d3d3;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 3rem;
+}
+
+.admin-signin-btn {
+  width: 40%;
+  margin-top: 50px;
+  padding: 10px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.admin-signin-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(4, 4, 41, 0.7);
+  padding: 20px;
+}
+
+.admin-signin-btn:hover {
+  background-color: rgb(7, 7, 27);
+  color: #fff;
+}
