@@ -22,7 +22,24 @@ const donationRequestsSlice = createSlice({
     name: 'donationRequests',
     initialState,
     reducers: {
-
+        approveDonationRequest: (state, { payload }) => {
+            const approvedRequest = state.donationRequestsList.map((item) => {
+                if(item.donation_requests_id !== payload) {
+                    return item;
+                }
+                return {...item, status: 'Approved'}
+            })
+            state.donationRequestsList = [...approvedRequest];
+        },
+        rejectDonationRequest: (state, { payload }) => {
+            const rejectedRequest = state.donationRequestsList.map((item) => {
+                if(item.donation_requests_id !== payload) {
+                    return item;
+                }
+                return {...item, status: 'Rejected'}
+            })
+            state.donationRequestsList = [...rejectedRequest];
+        }
     },
     extraReducers(builder) {
         builder
@@ -41,5 +58,7 @@ const donationRequestsSlice = createSlice({
           })
     }
 })
+
+export const { approveDonationRequest, rejectDonationRequest } = donationRequestsSlice.actions;
 
 export default donationRequestsSlice.reducer;

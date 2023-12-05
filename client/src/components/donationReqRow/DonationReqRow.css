@@ -1,0 +1,7 @@
+.scheduled-donations-row {
+  display: flex;
+  margin-top: 1rem;
+  border: 1px solid #333;
+  border-radius: 8px;
+  align-items: center;
+}

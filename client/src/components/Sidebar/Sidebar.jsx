@@ -17,11 +17,11 @@ const Sidebar = ({ type }) => {
                 <li>Blood Donations</li>
               </NavLink>
 
-              <NavLink to='/requests' className="sidebar-link">
+              <NavLink to='/bloodrequests' className="sidebar-link">
                 <li>Blood requests</li>
               </NavLink>
 
-              <NavLink to='/landing' className="sidebar-link">
+              <NavLink to='/completedtransactions' className="sidebar-link">
                 <li>Completed transactions</li>
               </NavLink>
 

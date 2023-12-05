@@ -11,6 +11,8 @@ import AdminLogin from './pages/adminLogin/adminLogin';
 import UserLogin from './pages/userlogin/userlogin';
 import ScheduledDonations from './pages/scheduledDonation/ScheduledDonations';
 import BloodDonations from './pages/bloodDonations/BloodDonations';
+import BloodRequests from './pages/bloodRequests/BloodRequests';
+import CompletedTransactions from './pages/completedTransactions/CompletedTransactions';
 
 function App() { 
   return (
@@ -26,6 +28,8 @@ function App() {
         <Route path='/userlogin'element={<UserLogin />}  />
         <Route path='/scheduleddonations'element={<ScheduledDonations />}  />
         <Route path='/blooddonations'element={<BloodDonations />}  />
+        <Route path='/bloodrequests'element={<BloodRequests />}  />
+        <Route path='/completedtransactions'element={<CompletedTransactions />}  />
       </Routes>
     </BrowserRouter>
   )

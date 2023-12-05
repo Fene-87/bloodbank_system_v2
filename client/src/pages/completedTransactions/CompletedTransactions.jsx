@@ -1,15 +1,15 @@
 import Sidebar from '../../components/Sidebar/Sidebar';
-import './BloodDonations.css';
+import './CompletedTransactions.css';
 
-const BloodDonations = () => {
+const CompletedTransactions = () => {
     return (
         <div className='admin-container'>
             <Sidebar />
             <div className='overview-container'>
-                <h2>Blood Donations</h2>
+                <h2>Completed Transactions</h2>
             </div>
         </div>
     )
 }
 
-export default BloodDonations;
+export default CompletedTransactions;

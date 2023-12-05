@@ -1,3 +1,16 @@
 .scheduled-donations-header {
   display: flex;
+  margin-top: 1rem;
+}
+
+.scheduled-donations-name {
+  width: 8%;
+}
+
+.scheduled-donations-email {
+    width: 16%;
+}
+
+.scheduled-donations-location {
+    width: 16%;
 }

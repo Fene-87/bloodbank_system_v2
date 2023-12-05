@@ -23,7 +23,24 @@ const bloodRequestsSlice = createSlice({
     name: 'bloodRequests',
     initialState,
     reducers: {
-
+        approveBloodRequest: (state, { payload }) => {
+            const approvedRequest = state.bloodRequestsList.map((item) => {
+                if(item.blood_request_id !== payload) {
+                    return item;
+                }
+                return {...item, status: 'Approved'}
+            })
+            state.bloodRequestsList = [...approvedRequest];
+        },
+        rejectBloodRequest: (state, { payload }) => {
+            const approvedRequest = state.bloodRequestsList.map((item) => {
+                if(item.blood_request_id !== payload) {
+                    return item;
+                }
+                return {...item, status: 'Rejected'}
+            })
+            state.bloodRequestsList = [...approvedRequest];
+        },
     },
     extraReducers(builder) {
         builder
@@ -42,5 +59,7 @@ const bloodRequestsSlice = createSlice({
           })
     }
 })
+
+export const { approveBloodRequest, rejectBloodRequest } = bloodRequestsSlice.actions;
 
 export default bloodRequestsSlice.reducer;
