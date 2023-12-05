@@ -5,15 +5,15 @@ const Sidebar = ({ type }) => {
     return (
         <div className="sidebar-container">
             <ul className='sidebar-items'>
-              <NavLink to='/landing' className="sidebar-link">
+              <NavLink to='/admin' className="sidebar-link">
                 <li>Overview</li>
               </NavLink>
 
-              <NavLink to='/landing' className="sidebar-link">
+              <NavLink to='/scheduleddonations' className="sidebar-link">
                 <li>Scheduled donations</li>
               </NavLink>
 
-              <NavLink to='/landing' className="sidebar-link">
+              <NavLink to='/blooddonations' className="sidebar-link">
                 <li>Blood Donations</li>
               </NavLink>
 

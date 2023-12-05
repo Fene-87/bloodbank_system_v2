@@ -9,6 +9,8 @@ import Signup from './pages/signup/Signup';
 import Signin from './pages/signin/Signin';
 import AdminLogin from './pages/adminLogin/adminLogin';
 import UserLogin from './pages/userlogin/userlogin';
+import ScheduledDonations from './pages/scheduledDonation/ScheduledDonations';
+import BloodDonations from './pages/bloodDonations/BloodDonations';
 
 function App() { 
   return (
@@ -21,8 +23,10 @@ function App() {
         <Route path='/signup' element={<Signup />} />
         <Route path='/' element={<Signin />} />
         <Route path='/adminlogin' element={<AdminLogin />} />
-        <Route path='/userlogin'element={<UserLogin />}  /> 
-           </Routes>
+        <Route path='/userlogin'element={<UserLogin />}  />
+        <Route path='/scheduleddonations'element={<ScheduledDonations />}  />
+        <Route path='/blooddonations'element={<BloodDonations />}  />
+      </Routes>
     </BrowserRouter>
   )
 }

@@ -11,8 +11,9 @@ const baseUrl = "http://localhost:3001/bloodrequests";
 export const fetchBloodRequests = createAsyncThunk('bloodRequests/fetchBloodRequests', async () => {
     try {
         const response = await Axios.get(baseUrl);
-        return response;
-        console.log(response, "Hello");
+        console.log(response.data);
+        return response.data;
+        
     } catch (error) {
         throw(error.message);
     }

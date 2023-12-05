@@ -11,8 +11,8 @@ const baseUrl = "http://localhost:3001/scheduled-donations";
 export const fetchDonationRequests = createAsyncThunk('donationRequests/fetchDonationRequests', async () => {
     try {
         const response = await Axios.get(baseUrl);
-        return response;
         console.log(response, "Hello");
+        return response.data;
     } catch (error) {
         throw(error.message);
     }

@@ -12,11 +12,11 @@ const Admin = () => {
 
   useEffect(() => {
     if(status === 'idle') {
-      dispatch(fetchDonationRequests);
-      dispatch(fetchBloodRequests);
+      dispatch(fetchDonationRequests());
+      dispatch(fetchBloodRequests());
       console.log(donationRequestsList)
     }
-  }, [status, dispatch]);
+  }, [status, dispatch, donationRequestsList. bloodRequestsList]);
 
   const bloodData = [
     {
