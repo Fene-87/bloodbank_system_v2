@@ -39,7 +39,7 @@ const Donation = () => {
           location: data.location,
         }).then(() => {
             alert('Your request to donate blood has been received.');
-            navigate('/donate')
+            navigate('/home')
         })
       } catch (error) {
         throw(error);

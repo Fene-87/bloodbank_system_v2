@@ -1,8 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchDonationRequests } from "../../redux/donationRequests/donationRequestsSlice";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import './admin.css';
+import { fetchBloodRequests } from "../../redux/bloodRequests/bloodRequestsSlice";
 
 const Admin = () => {
+  const { donationRequestsList, status } = useSelector((store) => store.donationRequests);
+  const { bloodRequestsList } = useSelector((store) => store.bloodRequests);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if(status === 'idle') {
+      dispatch(fetchDonationRequests);
+      dispatch(fetchBloodRequests);
+      console.log(donationRequestsList)
+    }
+  }, [status, dispatch]);
+
   const bloodData = [
     {
       bloodGrp: "A+",
@@ -30,6 +45,8 @@ const Admin = () => {
     },
   ];
 
+  // const getDonationRequests
+
   return (
     <div className="admin-container">
       <Sidebar />
@@ -38,19 +55,19 @@ const Admin = () => {
         <h2>Dashboard</h2>
 
         <div className="blood-groups">
-          {bloodData.map((blood) => (
-            <div className="bloodgrp-stats">
+          {bloodData.map((blood, index) => (
+            <div key={index} className="bloodgrp-stats">
               <h2>{blood.bloodGrp}</h2>
             </div>
           ))}
         </div>
 
         <div>
-          <h3>Scheduled donations:</h3>
+          <h3>Scheduled donations:{donationRequestsList.length}</h3>
         </div>
         
         <div>
-          <h3>Blood requests:</h3>
+          <h3>Blood requests:{bloodRequestsList.length}</h3>
         </div>
 
         <div>

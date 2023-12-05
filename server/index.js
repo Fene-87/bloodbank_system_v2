@@ -146,6 +146,21 @@ app.get('/scheduled-donations', (req, res) => {
                 res.send({ err: err })
             } else {
                 res.send(result)
+                console.log(result)
+            }
+        }
+    )
+})
+
+app.get('/bloodrequests', (req, res) => {
+    db.query(
+        'SELECT * FROM blood_requests',
+        async (err, result) => {
+            if(err) {
+                res.send({ err: err })
+            } else {
+                res.send(result)
+                console.log(result)
             }
         }
     )
