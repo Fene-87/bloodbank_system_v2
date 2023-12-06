@@ -2,6 +2,7 @@
   "name": "bloodbank",
   "private": true,
   "version": "0.0.0",
+  "author": "Fene-87",
   "type": "module",
   "scripts": {
     "dev": "vite",
