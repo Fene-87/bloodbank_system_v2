@@ -18,52 +18,93 @@ const Admin = () => {
     }
   }, [status, dispatch, donationRequestsList. bloodRequestsList]);
 
+  const aPosCount = donationRequestsList
+    .filter((item) => item.blood_group === 'A+')
+    .reduce((total, item) => total + item.amount, 0);
+
+  const aNegCount = donationRequestsList
+    .filter((item) => item.blood_group === 'A-')
+    .reduce((total, item) => total + item.amount, 0);
+
+  const bPosCount = donationRequestsList
+    .filter((item) => item.blood_group === 'B+')
+    .reduce((total, item) => total + item.amount, 0);
+
+  const bNegCount = donationRequestsList
+    .filter((item) => item.blood_group === 'B-')
+    .reduce((total, item) => total + item.amount, 0);
+
+  const abPosCount = donationRequestsList
+    .filter((item) => item.blood_group === 'AB+')
+    .reduce((total, item) => total + item.amount, 0);
+  
+  const abNegCount = donationRequestsList
+    .filter((item) => item.blood_group === 'AB-')
+    .reduce((total, item) => total + item.amount, 0);
+
+  const oPosCount = donationRequestsList
+    .filter((item) => item.blood_group === 'O+')
+    .reduce((total, item) => total + item.amount, 0);
+  
+  const oNegCount = donationRequestsList
+    .filter((item) => item.blood_group === 'O-')
+    .reduce((total, item) => total + item.amount, 0);
+
   const bloodData = [
     {
       bloodGrp: "A+",
+      quantity: aPosCount,
     },
     {
       bloodGrp: "A-",
+      quantity: aNegCount,
     },
     {
       bloodGrp: "B+",
+      quantity: bPosCount,
     },
     {
       bloodGrp: "B-",
+      quantity: bNegCount,
     },
     {
       bloodGrp: "AB+",
+      quantity: abPosCount,
     },
     {
       bloodGrp: "AB-",
+      quantity: abNegCount,
     },
     {
       bloodGrp: "O+",
+      quantity: oPosCount,
     },
     {
       bloodGrp: "O-",
+      quantity: oNegCount,
     },
   ];
 
-  // const getDonationRequests
+  const pendingList = donationRequestsList.filter((item) => item.status === 'Pending');
 
   return (
     <div className="admin-container">
       <Sidebar />
 
       <div className="overview-container">
-        <h2>Dashboard</h2>
+        <h2>Dashboard Overview</h2>
 
         <div className="blood-groups">
           {bloodData.map((blood, index) => (
             <div key={index} className="bloodgrp-stats">
               <h2>{blood.bloodGrp}</h2>
+              <h3>Available quantity(ml): {blood.quantity}</h3>
             </div>
           ))}
         </div>
 
         <div>
-          <h3>Scheduled donations:{donationRequestsList.length}</h3>
+          <h3>Scheduled donations:{pendingList.length}</h3>
         </div>
         
         <div>
@@ -130,3 +171,4 @@ export default Admin;
 //     </div>
 //         </div>
 //     )
+

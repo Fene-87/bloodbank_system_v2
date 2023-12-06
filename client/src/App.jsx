@@ -12,7 +12,7 @@ import UserLogin from './pages/userlogin/userlogin';
 import ScheduledDonations from './pages/scheduledDonation/ScheduledDonations';
 import BloodDonations from './pages/bloodDonations/BloodDonations';
 import BloodRequests from './pages/bloodRequests/BloodRequests';
-import CompletedTransactions from './pages/completedTransactions/CompletedTransactions';
+import ApprovedRequests from './pages/approvedRequests/ApprovedRequests';
 
 function App() { 
   return (
@@ -29,7 +29,7 @@ function App() {
         <Route path='/scheduleddonations'element={<ScheduledDonations />}  />
         <Route path='/blooddonations'element={<BloodDonations />}  />
         <Route path='/bloodrequests'element={<BloodRequests />}  />
-        <Route path='/completedtransactions'element={<CompletedTransactions />}  />
+        <Route path='/approvedrequests'element={<ApprovedRequests />}  />
       </Routes>
     </BrowserRouter>
   )

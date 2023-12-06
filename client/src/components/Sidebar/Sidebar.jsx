@@ -14,19 +14,19 @@ const Sidebar = ({ type }) => {
               </NavLink>
 
               <NavLink to='/blooddonations' className="sidebar-link">
-                <li>Blood Donations</li>
+                <li>Approved donations</li>
               </NavLink>
 
               <NavLink to='/bloodrequests' className="sidebar-link">
                 <li>Blood requests</li>
               </NavLink>
 
-              <NavLink to='/completedtransactions' className="sidebar-link">
-                <li>Completed transactions</li>
+              <NavLink to='/approvedrequests' className="sidebar-link">
+                <li>Approved requests</li>
               </NavLink>
 
-              <NavLink to='/landing' className="sidebar-link">
-                <li>Users</li>
+              <NavLink to='/home' className="sidebar-home">
+                <li>Back to Home</li>
               </NavLink>
             </ul>
         </div>

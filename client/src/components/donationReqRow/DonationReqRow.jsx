@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import Axios from 'axios';
 import { approveDonationRequest, rejectDonationRequest } from '../../redux/donationRequests/donationRequestsSlice';
 import './DonationReqRow.css';
 
@@ -20,11 +21,37 @@ const DonationReqRow = ({
     const dispatch = useDispatch();
 
     const approve = () => {
+        const amount = 470;
+        const approvedStatus = "Approved";
+
         dispatch(approveDonationRequest(donation_requests_id));
+
+        Axios.put("http://localhost:3001/approvedonrequest", {
+            status: approvedStatus,
+            amount: amount,
+            id: donation_requests_id,
+        }).then(() => {
+            console.log("successfully registered")
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+        
     }
 
     const reject = () => {
+        const rejectedStatus = "Rejected";
+
         dispatch(rejectDonationRequest(donation_requests_id));
+        Axios.put("http://localhost:3001/rejectdonrequest", {
+            status: rejectedStatus,
+            id: donation_requests_id,
+        }).then(() => {
+            console.log("Donation Rejected")
+        })
+        .catch((error) => {
+            console.log(error)
+        })
     }
 
     return (

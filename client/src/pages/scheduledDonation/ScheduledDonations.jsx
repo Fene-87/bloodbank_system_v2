@@ -7,6 +7,8 @@ import DonationReqRow from '../../components/donationReqRow/DonationReqRow';
 const ScheduledDonations = () => {
     const { donationRequestsList, status } = useSelector((store) => store.donationRequests);
 
+    const pendingList = donationRequestsList.filter((item) => item.status === 'Pending')
+
     return (
         <div className='admin-container'>
             <Sidebar />
@@ -22,7 +24,7 @@ const ScheduledDonations = () => {
                   <p className='scheduled-donations-email'>Location</p>
                   <p className='scheduled-donations-name'>Status</p>
               </div>
-              {donationRequestsList.map((donationRow) => (
+              {pendingList.map((donationRow) => (
                 <DonationReqRow key={donationRow.donation_requests_id} {...donationRow} />
               ))}
             </div>

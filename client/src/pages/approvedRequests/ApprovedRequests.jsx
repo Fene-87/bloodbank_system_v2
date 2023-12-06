@@ -1,15 +1,15 @@
 import Sidebar from '../../components/Sidebar/Sidebar';
-import './CompletedTransactions.css';
+import './ApprovedRequests.css';
 
-const CompletedTransactions = () => {
+const ApprovedRequests = () => {
     return (
         <div className='admin-container'>
             <Sidebar />
             <div className='overview-container'>
-                <h2>Completed Transactions</h2>
+                <h2>Approved Requests</h2>
             </div>
         </div>
     )
 }
 
-export default CompletedTransactions;
+export default ApprovedRequests;

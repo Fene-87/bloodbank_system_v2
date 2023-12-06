@@ -26,7 +26,13 @@
 
 .sidebar-link:hover {
     /* text-decoration: underline;
-    text-decoration-line: 3px;
+    text-decoration-thickness: 3px;
     text-decoration-color: #c31432; */
     border-bottom: 3px solid #c31432;
+}
+
+.sidebar-home {
+    text-decoration: none;
+    color: #c31432;
+    margin-top: 12rem;
 }
