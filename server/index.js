@@ -201,6 +201,40 @@ app.put('/rejectdonrequest', (req, res) => {
     )
 })
 
+app.put('/approvebloodrequest', (req, res) => {
+    const status = req.body.status;
+    const id = req.body.id;
+
+    db.query(
+        'UPDATE blood_requests SET status = ? WHERE blood_request_id = ?',
+        [status, id],
+        (err, result) => {
+            if(err) {
+                res.send({ err: err })
+            } else {
+                res.send(result);
+            }
+        }
+    )
+})
+
+app.put('/rejectbloodrequest', (req, res) => {
+    const status = req.body.status;
+    const id = req.body.id;
+
+    db.query(
+        'UPDATE blood_requests SET status = ? WHERE blood_request_id = ?',
+        [status, id],
+        (err, result) => {
+            if(err) {
+                res.send({ err: err })
+            } else {
+                res.send(result);
+            }
+        }
+    )
+})
+
 app.listen(3001, () => {
     console.log("Your server is up and running");
 });

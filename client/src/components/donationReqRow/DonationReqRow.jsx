@@ -31,7 +31,7 @@ const DonationReqRow = ({
             amount: amount,
             id: donation_requests_id,
         }).then(() => {
-            console.log("successfully registered")
+            console.log("successfully approved")
         })
         .catch((error) => {
             console.log(error)
@@ -64,8 +64,8 @@ const DonationReqRow = ({
             <p className='scheduled-donations-name'>{formattedDate}</p>
             <p className='scheduled-donations-email'>{location}</p>
             <p className='scheduled-donations-name'>{status}</p>
-            <button onClick={approve}>Approve</button>
-            <button onClick={reject}>Reject</button>
+            <button onClick={approve} className='approve-btn'>Approve</button>
+            <button onClick={reject} className='reject-btn'>Reject</button>
         </div>
     )
 }

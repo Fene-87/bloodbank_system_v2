@@ -13,7 +13,7 @@ const ScheduledDonations = () => {
         <div className='admin-container'>
             <Sidebar />
             <div className='overview-container'>
-              <h2>Scheduled Donations</h2>
+              <h2 className="dashboard-overview">Scheduled Donations</h2>
               <div className='scheduled-donations-header'>
                   <p className='scheduled-donations-name'>First Name</p>
                   <p className='scheduled-donations-name'>Last Name</p>

@@ -8,6 +8,15 @@
   flex-direction: column;
   width: 100%;
   padding: 2rem;
+  background: #ffffff;
+  background: -webkit-linear-gradient(to left, rgb( 39, 64, 70, 0.5), #ffffff);
+  background: linear-gradient(to left, rgb( 39, 64, 70, 0.5), #ffffff);
+}
+
+.dashboard-overview {
+  font-size: 30px;
+  letter-spacing: 3px;
+  color: #c31432;
 }
 
 .blood-groups {
@@ -18,6 +27,37 @@
 }
 
 .bloodgrp-stats {
-  border: 3px solid #d3d3d3;
+  /* border: 3px solid #d3d3d3; */
   height: 10rem;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 15px;
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.icon-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.icon {
+  margin: auto;
+  color: #c31432;
+  font-size: 50px;
+}
+
+.available-qty {
+  color: #686363;
+}
+
+.scheduled-don-div {
+  margin-top: 2rem;
+}
+
+.scheduled-don-text {
+  letter-spacing: 3px;
 }

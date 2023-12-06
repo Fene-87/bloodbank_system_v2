@@ -87,7 +87,7 @@ const Landing = () => {
                             <p className="footer-text">Copyright &copy; 2023 Save Lifes. All rights reserved</p>
                             <div className="footer-link-div">
                             <a href="#home" className="footer-link">
-                              <p className="footer-link-text">T</p>
+                              <p className="footer-link-text">^</p>
                             </a>
                             </div>
                         </footer>

@@ -6,11 +6,13 @@ import BloodReqRow from '../../components/bloodReqRow/BloodReqRow';
 const BloodRequests = () => {
     const { bloodRequestsList, status } = useSelector((store) => store.bloodRequests);
 
+    const list = bloodRequestsList.filter((item) => item.status === 'Pending');
+
     return (
         <div className='admin-container'>
             <Sidebar />
             <div className='overview-container'>
-                <h2>Blood Requests</h2>
+                <h2 className="dashboard-overview">Blood Requests</h2>
                 <div className='scheduled-donations-header'>
                   <p className='scheduled-donations-name'>First Name</p>
                   <p className='scheduled-donations-name'>Last Name</p>
@@ -20,7 +22,7 @@ const BloodRequests = () => {
                   <p className='scheduled-donations-email'>Reason</p>
                   <p className='scheduled-donations-name'>Status</p>
             </div>
-                {bloodRequestsList.map((requestRow) => (
+                {list.map((requestRow) => (
                     <BloodReqRow key={requestRow.blood_request_id} {...requestRow} />
                 ))}
             </div>
