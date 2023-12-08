@@ -21,7 +21,7 @@ const ScheduledDonations = () => {
                   <p className='scheduled-donations-name'>Contact</p>
                   <p className='scheduled-donations-name'>Blood Grp</p>
                   <p className='scheduled-donations-name'>Date</p>
-                  <p className='scheduled-donations-email'>Location</p>
+                  <p className='scheduled-donations-location'>Location</p>
                   <p className='scheduled-donations-name'>Status</p>
               </div>
               {pendingList.map((donationRow) => (

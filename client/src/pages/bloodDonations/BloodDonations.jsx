@@ -2,12 +2,15 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 import { useSelector } from 'react-redux';
 import ApprovedDonRow from '../../components/approvedDonRow/ApprovedDonRow';
 import './BloodDonations.css';
+import PrintDonations from '../../components/print/PrintDonations';
+import { useState, useEffect } from 'react';
 
 const BloodDonations = () => {
-    const { donationRequestsList, status } = useSelector((store) => store.donationRequests);
+    const { donationRequestsList, status, donation, printDonation } = useSelector((store) => store.donationRequests);
 
     const approved = donationRequestsList.filter((item) => item.status === 'Approved');
 
+   
     return (
         <div className='admin-container'>
             <Sidebar />
@@ -26,6 +29,11 @@ const BloodDonations = () => {
                 {approved.map((item) => (
                     <ApprovedDonRow key={item.donation_requests_id} {...item} />
                 ))}
+
+                {printDonation && <div>
+                    <PrintDonations details={donation} />
+                </div>
+                }
             </div>
         </div>
     )

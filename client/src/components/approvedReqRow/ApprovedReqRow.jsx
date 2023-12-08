@@ -1,4 +1,6 @@
 import './ApprovedReqRow.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPrint } from '@fortawesome/free-solid-svg-icons'
 
 const ApprovedReqRow = ({
     blood_request_id,
@@ -16,6 +18,7 @@ const ApprovedReqRow = ({
             <p className='scheduled-donations-email'>{email}</p>
             <p className='scheduled-donations-email'>{blood_group}</p>
             <p className='scheduled-donations-email'>{location}</p>
+            <button><FontAwesomeIcon icon={faPrint} /></button>
         </div>
     )
 }

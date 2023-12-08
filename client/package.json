@@ -21,7 +21,8 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.48.2",
     "react-router-dom": "^6.16.0",
-    "react-time-picker": "^6.5.2"
+    "react-time-picker": "^6.5.2",
+    "react-to-print": "^2.14.15"
   },
   "devDependencies": {
     "@hookform/devtools": "^4.3.1",

@@ -1,0 +1,51 @@
+.print-overall {
+  border: 3px solid #c31432;
+  position: fixed;
+  border-radius: 5px;
+  width: 70%;
+  top: 2.5rem;
+  background-color: #fff;
+  padding: 2rem;
+}
+
+.print-header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.print-section {
+  display: flex;
+  /* border-bottom: 1px solid black; */
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 3rem;
+  margin-top: 1rem;
+}
+
+.print-text {
+  font-size: 20px;
+}
+
+.print-location {
+  justify-content: center;
+}
+
+.print-btn {
+  margin-top: 1rem;
+  background-color: #fff;
+  border: 3px solid #c31432;
+  color: #333;
+  padding: 10px 20px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.cancel-btn {
+    margin-top: 1rem;
+    background-color: #fff;
+    border: 3px solid #333;
+    color: #c31432;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+}

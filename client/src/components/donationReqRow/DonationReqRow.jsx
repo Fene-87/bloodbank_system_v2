@@ -62,7 +62,7 @@ const DonationReqRow = ({
             <p className='scheduled-donations-name'>{contact}</p>
             <p className='scheduled-donations-name'>{blood_group}</p>
             <p className='scheduled-donations-name'>{formattedDate}</p>
-            <p className='scheduled-donations-email'>{location}</p>
+            <p className='scheduled-donations-location'>{location}</p>
             <p className='scheduled-donations-name'>{status}</p>
             <button onClick={approve} className='approve-btn'>Approve</button>
             <button onClick={reject} className='reject-btn'>Reject</button>

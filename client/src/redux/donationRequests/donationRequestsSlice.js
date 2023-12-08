@@ -4,6 +4,8 @@ import Axios from "axios";
 const initialState = {
     donationRequestsList: [],
     status: 'idle',
+    printDonation: false,
+    donation: {},
 }
 
 const baseUrl = "http://localhost:3001/scheduled-donations";
@@ -39,6 +41,14 @@ const donationRequestsSlice = createSlice({
                 return {...item, status: 'Rejected'}
             })
             state.donationRequestsList = [...rejectedRequest];
+        },
+        getDonation: (state, { payload }) => {
+            const request = state.donationRequestsList.find((item) => item.donation_requests_id === payload)
+            state.donation = {...request}
+            state.printDonation = true;
+        },
+        cancelPrint: (state) => {
+            state.printDonation = false;
         }
     },
     extraReducers(builder) {
@@ -59,6 +69,6 @@ const donationRequestsSlice = createSlice({
     }
 })
 
-export const { approveDonationRequest, rejectDonationRequest } = donationRequestsSlice.actions;
+export const { approveDonationRequest, rejectDonationRequest, getDonation, cancelPrint } = donationRequestsSlice.actions;
 
 export default donationRequestsSlice.reducer;
