@@ -40,7 +40,7 @@ const Signin = () => {
                   </div>
 
                   <div className='input-container'>
-                    <label className='label'>EMAIL</label>
+                    <label htmlFor='email' className='label'>EMAIL</label>
                     <input 
                       type="email"
                       id="email"
@@ -51,12 +51,10 @@ const Signin = () => {
                         }
                       })}
                       placeholder='Email' 
-                      required
-                      // onChange={(e) => setEmail(e.target.value)} 
                       className='input' />
                       <p>{errors.email?.message}</p>
                   </div>
-                
+      
                   <div className='input-container'>
                     <label className='label'>PASSWORD</label>
                     <input 

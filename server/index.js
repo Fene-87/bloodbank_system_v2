@@ -70,6 +70,170 @@ app.post('/signin', async (req, res) => {
     )
 })
 
+app.post('/adminsignin', async (req, res) => {
+    const email = req.body.email;
+    const password = req.body.password;
+
+    db.query(
+        "SELECT * FROM users WHERE email = ? AND role = 'admin'",
+        [email],
+        async (err, result) => {
+            if(err) {
+                res.send({ err: err });
+            } else if(result.length > 0){
+               const isPasswordCorrect = await bcrypt.compare(password, result[0].password);
+               if (!isPasswordCorrect) {
+                res.send({ message: 'Incorrect Password' });
+               } else {
+                res.send(result);
+                console.log(result);
+               }
+            } else {
+                res.send({ message: 'Acces denied! You are not authorized!' });
+            }
+        }
+    )
+})
+
+app.post('/requestdonate', async (req, res) => {
+    const bloodGroup = req.body.bloodGroup;
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const email = req.body.email;
+    const contact = req.body.contact;
+    const date = req.body.date;
+    const location = req.body.location;
+
+    db.query(
+        'INSERT INTO donation_requests (blood_group, first_name, last_name, email, contact, scheduled_date, location) VALUES (?,?,?,?,?,?,?)',
+        [bloodGroup, firstName, lastName, email, contact, date, location],
+        async (err, result) => {
+            if(err) {
+              console.log(err)
+            } else {
+                res.send("Your request to donate blood has been received.");
+            }
+        }
+    )
+})
+
+app.post('/requestblood', async (req, res) => {
+    const bloodGroup = req.body.bloodGroup;
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const email = req.body.email;
+    const location = req.body.location;
+    const reason = req.body.reason;
+
+    db.query(
+        'INSERT INTO blood_requests (blood_group, first_name, last_name, email, location, reason) VALUES (?,?,?,?,?,?)',
+        [bloodGroup, firstName, lastName, email, location, reason],
+        async (err, result) => {
+            if(err) {
+              console.log(err)
+            } else {
+                res.send("Your request for blood has been received.");
+            }
+        }
+    )
+})
+
+app.get('/scheduled-donations', (req, res) => {
+    db.query(
+        'SELECT * FROM donation_requests',
+        async (err, result) => {
+            if(err) {
+                res.send({ err: err })
+            } else {
+                res.send(result)
+                console.log(result)
+            }
+        }
+    )
+})
+
+app.get('/bloodrequests', (req, res) => {
+    db.query(
+        'SELECT * FROM blood_requests',
+        async (err, result) => {
+            if(err) {
+                res.send({ err: err })
+            } else {
+                res.send(result)
+                console.log(result)
+            }
+        }
+    )
+})
+
+app.put('/approvedonrequest', (req, res) => {
+    const status = req.body.status;
+    const amount = req.body.amount;
+    const id = req.body.id;
+
+    db.query(
+        'UPDATE donation_requests SET status = ?, amount = ? WHERE donation_requests_id = ?',
+        [status, amount, id],
+        (err, result) => {
+            if(err) {
+                res.send({ err: err })
+            } else {
+                res.send(result);
+            }
+        }
+    )
+})
+
+app.put('/rejectdonrequest', (req, res) => {
+    const status = req.body.status;
+    const id = req.body.id;
+
+    db.query(
+        'UPDATE donation_requests SET status = ? WHERE donation_requests_id = ?',
+        [status, id],
+        (err, result) => {
+            if(err) {
+                res.send({ err: err })
+            } else {
+                res.send(result);
+            }
+        }
+    )
+})
+
+app.put('/approvebloodrequest', (req, res) => {
+    const status = req.body.status;
+    const id = req.body.id;
+
+    db.query(
+        'UPDATE blood_requests SET status = ? WHERE blood_request_id = ?',
+        [status, id],
+        (err, result) => {
+            if(err) {
+                res.send({ err: err })
+            } else {
+                res.send(result);
+            }
+        }
+    )
+})
+
+app.put('/rejectbloodrequest', (req, res) => {
+    const status = req.body.status;
+    const id = req.body.id;
+
+    db.query(
+        'UPDATE blood_requests SET status = ? WHERE blood_request_id = ?',
+        [status, id],
+        (err, result) => {
+            if(err) {
+                res.send({ err: err })
+            } else {
+                res.send(result);
+            }
+        }
+    )
+})
 
 app.listen(3001, () => {
     console.log("Your server is up and running");

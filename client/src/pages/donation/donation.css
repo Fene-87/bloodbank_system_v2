@@ -1,28 +1,75 @@
-.form-container {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 93vh;
-  background-image: url(../../assets/blood.jpg) ;
-  background-size: cover;
-  background-position: center;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
+.donation-page {
+  height: 100vh;
+  background: #ffffff;
+  background: -webkit-linear-gradient(to left, rgb( 39, 64, 70, 0.5), #ffffff);
+  background: linear-gradient(to left, rgb( 39, 64, 70, 0.5), #ffffff);
 }
 
-.form-gradient {
-  background-color: rgb(0, 0, 0, 0.7);
+.donate-form-container {
   width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.donate-form {
+  height: 90%;
   display: flex;
   flex-direction: column;
-  width: 35%;
   align-items: center;
-  justify-content: center;
+}
+
+.donate-form {
+  margin-top: 4rem;
+  /* width: 40rem; */
+}
+
+.donate-blood-grp {
+  display: flex;
+  flex-direction: column;
+  width: 40rem;
+  border: 1px solid #fff;
+  padding: 20px;
+}
+
+.bloodgrp-label {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.donate-input {
+  padding: 10px;
+  outline: none;
+  border-radius: 5px;
+  border: none;
+}
+
+.input-width {
+  width: 15rem;
+}
+
+.donate-details {
+  width: 40rem;
+  border: 1px solid #fff;
+  margin-top: 3rem;
+  padding: 20px;
+}
+
+.details-header {
+  color: #c31432;
+}
+
+.donate-label {
+  display: none;
+}
+
+.details-section {
+  margin-top: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.donation-request {
+  margin-top: 2rem;
+  background-color: #c31432;
+  border: 3px solid #fff;
+  color: #fff;
+  padding: 10px;
+  font-size: 18px;
+  cursor: pointer;
 }

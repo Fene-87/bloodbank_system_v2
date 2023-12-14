@@ -19,7 +19,7 @@ const Navbar = ({ type }) => {
                     <li>Appointments</li>
                     <li>Requests</li>
                   </>
-                  :
+                  : type === 'home' ?
                   <>
                     <div className='navbar-links-section'>
                       <NavLink to='/home' onClick={() => handleClick(1)} className="navbar-link">
@@ -39,7 +39,7 @@ const Navbar = ({ type }) => {
                       </NavLink>
 
                       <NavLink to='/recipient' onClick={() => handleClick(5)} className="navbar-link">
-                        <li className={activeLink === 5 ? 'active-link' : 'link-text'}>Recipients</li>
+                        <li className={activeLink === 5 ? 'active-link' : 'link-text'}>Request Blood</li>
                       </NavLink>
 
                       <a href='#contact' onClick={() => handleClick(6)} className="navbar-link">
@@ -51,6 +51,48 @@ const Navbar = ({ type }) => {
                       <p className='navbar-admin'>Admin</p>
                     </NavLink>
                   </>
+                  : type === 'donate' ?
+                  <div className='donate-links-section'>
+                    <div>
+                      <NavLink to='/home' onClick={() => handleClick(1)} className="navbar-link">
+                        <li className={activeLink === 1 ? 'active-link' : 'link-text'}>Home</li>
+                      </NavLink>
+                    </div>
+
+                    <p className='schedule-header'>Schedule your donation</p>
+
+                    <NavLink to='/adminlogin' className="navbar-link">
+                      <p className='navbar-admin'>Admin</p>
+                    </NavLink>
+                  </div>
+                  : type === 'request' ?
+                  <div className='donate-links-section'>
+                    <div>
+                      <NavLink to='/home' onClick={() => handleClick(1)} className="navbar-link">
+                        <li className={activeLink === 1 ? 'active-link' : 'link-text'}>Home</li>
+                      </NavLink>
+                    </div>
+
+                    <p className='schedule-header'>Request for blood</p>
+
+                    <NavLink to='/adminlogin' className="navbar-link">
+                      <p className='navbar-admin'>Admin</p>
+                    </NavLink>
+                  </div>
+                  :
+                  <div className='donate-links-section'>
+                    <div>
+                      <NavLink to='/home' onClick={() => handleClick(1)} className="navbar-link">
+                        <li className={activeLink === 1 ? 'active-link' : 'link-text'}>Home</li>
+                      </NavLink>
+                    </div>
+
+                    <p className='admin-login-header'>Are you an Admin?</p>
+
+                    {/* <NavLink to='/adminlogin' className="navbar-link">
+                      <p className='navbar-admin'>Admin</p>
+                    </NavLink> */}
+                  </div>
                 }
             </ul>
         </div>

@@ -1,5 +1,8 @@
 {
+  "author": "Fene-87",
   "dependencies": {
-    "mysql2": "^3.6.1"
+    "@reduxjs/toolkit": "^2.0.1",
+    "mysql2": "^3.6.1",
+    "react-redux": "^9.0.1"
   }
 }

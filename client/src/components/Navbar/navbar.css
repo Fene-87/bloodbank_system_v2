@@ -26,6 +26,22 @@
   list-style: none;
 }
 
+.donate-links-section {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  color: #333;
+  list-style: none;
+}
+
+.schedule-header {
+  font-size: 22px;
+  color: #c31432;
+  letter-spacing: 3px;
+  font-weight: bolder;
+}
+
 .navbar-link {
   text-decoration: none;
 }
@@ -54,4 +70,12 @@
   color: #fff;
   border: 3px solid #fff;
   background-color: #333;
+}
+
+.admin-login-header {
+  margin: auto;
+  font-size: 22px;
+  color: #c31432;
+  letter-spacing: 3px;
+  font-weight: bolder;
 }

@@ -1,0 +1,27 @@
+.scheduled-donations-row {
+  display: flex;
+  margin-top: 1rem;
+  border: 1px solid #333;
+  border-radius: 8px;
+  align-items: center;
+  padding: 5px 0;
+}
+
+.approve-btn {
+  background-color: green;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.reject-btn {
+  background-color: red;
+  margin-left: 10px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
+}
