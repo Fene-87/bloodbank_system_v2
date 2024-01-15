@@ -32,7 +32,7 @@ app.post('/create', async (req, res) => {
     const role = req.body.role;
 
     db.query(
-        'INSERT INTO users (national_id, username, gender, blood_type, age, password, address, contact_number, email, diseases, role) VALUES (?,?,?,?,?,?,?,?,?,?,?)',
+        'INSERT INTO users (user_national_id, user_name, user_gender, user_blood_type, user_age, user_password, user_address, user_contact_number, user_email, diseases, user_role) VALUES (?,?,?,?,?,?,?,?,?,?,?)',
         [nationalId, userName, gender, bloodGroup, age, password, address, contactNumber, email, diseases, role],
         (err, result) => {
            if(err){
@@ -50,13 +50,13 @@ app.post('/signin', async (req, res) => {
     const password = req.body.password;
 
     db.query(
-        'SELECT * FROM users WHERE email = ?',
+        'SELECT * FROM users WHERE user_email = ?',
         [email],
         async (err, result) => {
             if(err) {
                 res.send({ err: err });
             } else if(result.length > 0){
-               const isPasswordCorrect = await bcrypt.compare(password, result[0].password);
+               const isPasswordCorrect = await bcrypt.compare(password, result[0].user_password);
                if (!isPasswordCorrect) {
                 res.send({ message: 'Incorrect Password' });
                } else {
@@ -75,13 +75,13 @@ app.post('/adminsignin', async (req, res) => {
     const password = req.body.password;
 
     db.query(
-        "SELECT * FROM users WHERE email = ? AND role = 'admin'",
+        "SELECT * FROM users WHERE user_email = ? AND user_role = 'admin'",
         [email],
         async (err, result) => {
             if(err) {
                 res.send({ err: err });
             } else if(result.length > 0){
-               const isPasswordCorrect = await bcrypt.compare(password, result[0].password);
+               const isPasswordCorrect = await bcrypt.compare(password, result[0].user_password);
                if (!isPasswordCorrect) {
                 res.send({ message: 'Incorrect Password' });
                } else {
@@ -105,7 +105,7 @@ app.post('/requestdonate', async (req, res) => {
     const location = req.body.location;
 
     db.query(
-        'INSERT INTO donation_requests (blood_group, first_name, last_name, email, contact, scheduled_date, location) VALUES (?,?,?,?,?,?,?)',
+        'INSERT INTO donation_requests (donor_blood_group, donor_first_name, donor_last_name, donor_email, donor_contact, scheduled_date, donor_location) VALUES (?,?,?,?,?,?,?)',
         [bloodGroup, firstName, lastName, email, contact, date, location],
         async (err, result) => {
             if(err) {
@@ -126,7 +126,7 @@ app.post('/requestblood', async (req, res) => {
     const reason = req.body.reason;
 
     db.query(
-        'INSERT INTO blood_requests (blood_group, first_name, last_name, email, location, reason) VALUES (?,?,?,?,?,?)',
+        'INSERT INTO blood_requests (recipient_blood_group, recipient_first_name, recipient_last_name, recipient_email, recipient_location, reason) VALUES (?,?,?,?,?,?)',
         [bloodGroup, firstName, lastName, email, location, reason],
         async (err, result) => {
             if(err) {
