@@ -15,7 +15,7 @@ const Signup = () => {
     
     const onSubmit = (data) => {
         try {
-            Axios.post("http://localhost:3001/create", {
+            Axios.post("http://localhost:3001/server/auth/create", {
               userName: data.userName,
               email: data.email,
               age: data.age,
