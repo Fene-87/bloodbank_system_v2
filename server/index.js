@@ -3,12 +3,14 @@ import mysql2 from "mysql2";
 import cors from "cors";
 import bcrypt from "bcryptjs";
 import authRoute from "./routes/auth.js";
+import donationRoute from "./routes/donation.js";
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 app.use('/server/auth', authRoute);
+app.use('/server/donation', donationRoute);
 
 export const db = mysql2.createConnection({
     user: 'root',
@@ -16,53 +18,6 @@ export const db = mysql2.createConnection({
     password: 'Cn769321@',
     database: 'bloodbank'
 });
-
-// app.post('/adminsignin', async (req, res) => {
-//     const email = req.body.email;
-//     const password = req.body.password;
-
-//     db.query(
-//         "SELECT * FROM users WHERE user_email = ? AND user_role = 'admin'",
-//         [email],
-//         async (err, result) => {
-//             if(err) {
-//                 res.send({ err: err });
-//             } else if(result.length > 0){
-//                const isPasswordCorrect = await bcrypt.compare(password, result[0].user_password);
-//                if (!isPasswordCorrect) {
-//                 res.send({ message: 'Incorrect Password' });
-//                } else {
-//                 res.send(result);
-//                 console.log(result);
-//                }
-//             } else {
-//                 res.send({ message: 'Acces denied! You are not authorized!' });
-//             }
-//         }
-//     )
-// })
-
-app.post('/requestdonate', async (req, res) => {
-    const bloodGroup = req.body.bloodGroup;
-    const firstName = req.body.firstName;
-    const lastName = req.body.lastName;
-    const email = req.body.email;
-    const contact = req.body.contact;
-    const date = req.body.date;
-    const location = req.body.location;
-
-    db.query(
-        'INSERT INTO donation_requests (donor_blood_group, donor_first_name, donor_last_name, donor_email, donor_contact, scheduled_date, donor_location) VALUES (?,?,?,?,?,?,?)',
-        [bloodGroup, firstName, lastName, email, contact, date, location],
-        async (err, result) => {
-            if(err) {
-              console.log(err)
-            } else {
-                res.send("Your request to donate blood has been received.");
-            }
-        }
-    )
-})
 
 app.post('/requestblood', async (req, res) => {
     const bloodGroup = req.body.bloodGroup;

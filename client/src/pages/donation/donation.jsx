@@ -29,7 +29,7 @@ const Donation = () => {
 
     const onSubmit = (data) => {
       try {
-        Axios.post("http://localhost:3001/requestdonate", {
+        Axios.post("http://localhost:3001/server/donation/requesttodonate", {
           bloodGroup: data.bloodGroup,
           firstName: data.firstName,
           lastName: data.lastName,
