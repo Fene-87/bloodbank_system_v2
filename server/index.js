@@ -47,30 +47,30 @@ export const db = mysql2.createConnection({
 //     );
 // });
 
-app.post('/signin', async (req, res) => {
-    const email = req.body.email;
-    const password = req.body.password;
+// app.post('/signin', async (req, res) => {
+//     const email = req.body.email;
+//     const password = req.body.password;
 
-    db.query(
-        'SELECT * FROM users WHERE user_email = ?',
-        [email],
-        async (err, result) => {
-            if(err) {
-                res.send({ err: err });
-            } else if(result.length > 0){
-               const isPasswordCorrect = await bcrypt.compare(password, result[0].user_password);
-               if (!isPasswordCorrect) {
-                res.send({ message: 'Incorrect Password' });
-               } else {
-                res.send(result);
-                console.log(result);
-               }
-            } else {
-                res.send({ message: 'Invalid email/password' });
-            }
-        }
-    )
-})
+//     db.query(
+//         'SELECT * FROM users WHERE user_email = ?',
+//         [email],
+//         async (err, result) => {
+//             if(err) {
+//                 res.send({ err: err });
+//             } else if(result.length > 0){
+//                const isPasswordCorrect = await bcrypt.compare(password, result[0].user_password);
+//                if (!isPasswordCorrect) {
+//                 res.send({ message: 'Incorrect Password' });
+//                } else {
+//                 res.send(result);
+//                 console.log(result);
+//                }
+//             } else {
+//                 res.send({ message: 'Invalid email/password' });
+//             }
+//         }
+//     )
+// })
 
 app.post('/adminsignin', async (req, res) => {
     const email = req.body.email;
