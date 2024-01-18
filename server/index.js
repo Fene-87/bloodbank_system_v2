@@ -21,20 +21,6 @@ export const db = mysql2.createConnection({
     database: 'bloodbank'
 });
 
-app.get('/bloodrequests', (req, res) => {
-    db.query(
-        'SELECT * FROM blood_requests',
-        async (err, result) => {
-            if(err) {
-                res.send({ err: err })
-            } else {
-                res.send(result)
-                console.log(result)
-            }
-        }
-    )
-})
-
 app.put('/approvedonrequest', (req, res) => {
     const status = req.body.status;
     const amount = req.body.amount;
