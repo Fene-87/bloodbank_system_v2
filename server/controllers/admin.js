@@ -79,3 +79,20 @@ export const approveBloodRequest = (req, res, next) => {
         }
     )
 }
+
+export const rejectBloodRequest = async (req, res, next) => {
+    const status = req.body.status;
+    const id = req.body.id;
+
+    db.query(
+        'UPDATE blood_requests SET status = ? WHERE blood_request_id = ?',
+        [status, id],
+        (err, result) => {
+            if(err) {
+                res.send({ err: err })
+            } else {
+                res.send(result);
+            }
+        }
+    )
+}
