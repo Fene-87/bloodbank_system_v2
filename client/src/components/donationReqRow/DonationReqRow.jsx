@@ -26,7 +26,7 @@ const DonationReqRow = ({
 
         dispatch(approveDonationRequest(donation_requests_id));
 
-        Axios.put("http://localhost:3001/approvedonrequest", {
+        Axios.put("http://localhost:3001/server/admin/approvedonrequest", {
             status: approvedStatus,
             amount: amount,
             id: donation_requests_id,
