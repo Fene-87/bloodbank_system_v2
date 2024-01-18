@@ -20,7 +20,7 @@ const BloodReqRow = ({
 
         dispatch(approveBloodRequest(blood_request_id));
 
-        Axios.put("http://localhost:3001/approvebloodrequest", {
+        Axios.put("http://localhost:3001/server/admin/approvebloodrequest", {
             status: approvedStatus,
             id: blood_request_id,
         }).then(() => {

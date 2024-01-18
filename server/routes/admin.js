@@ -1,5 +1,5 @@
 import express from "express";
-import { approveDonationRequest, fetchBloodRequests, fetchScheduledDonations, rejectDonationRequest } from "../controllers/admin.js";
+import { approveBloodRequest, approveDonationRequest, fetchBloodRequests, fetchScheduledDonations, rejectDonationRequest } from "../controllers/admin.js";
 
 const router = express.Router();
 
@@ -10,5 +10,7 @@ router.get('/bloodrequests', fetchBloodRequests);
 router.put('/approvedonrequest', approveDonationRequest);
 
 router.put('/rejectdonrequest', rejectDonationRequest);
+
+router.put('/approvebloodrequest', approveBloodRequest);
 
 export default router;
