@@ -19,26 +19,26 @@ export const db = mysql2.createConnection({
     database: 'bloodbank'
 });
 
-app.post('/requestblood', async (req, res) => {
-    const bloodGroup = req.body.bloodGroup;
-    const firstName = req.body.firstName;
-    const lastName = req.body.lastName;
-    const email = req.body.email;
-    const location = req.body.location;
-    const reason = req.body.reason;
+// app.post('/requestblood', async (req, res) => {
+//     const bloodGroup = req.body.bloodGroup;
+//     const firstName = req.body.firstName;
+//     const lastName = req.body.lastName;
+//     const email = req.body.email;
+//     const location = req.body.location;
+//     const reason = req.body.reason;
 
-    db.query(
-        'INSERT INTO blood_requests (recipient_blood_group, recipient_first_name, recipient_last_name, recipient_email, recipient_location, reason) VALUES (?,?,?,?,?,?)',
-        [bloodGroup, firstName, lastName, email, location, reason],
-        async (err, result) => {
-            if(err) {
-              console.log(err)
-            } else {
-                res.send("Your request for blood has been received.");
-            }
-        }
-    )
-})
+//     db.query(
+//         'INSERT INTO blood_requests (recipient_blood_group, recipient_first_name, recipient_last_name, recipient_email, recipient_location, reason) VALUES (?,?,?,?,?,?)',
+//         [bloodGroup, firstName, lastName, email, location, reason],
+//         async (err, result) => {
+//             if(err) {
+//               console.log(err)
+//             } else {
+//                 res.send("Your request for blood has been received.");
+//             }
+//         }
+//     )
+// })
 
 app.get('/scheduled-donations', (req, res) => {
     db.query(
