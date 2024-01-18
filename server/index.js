@@ -21,24 +21,6 @@ export const db = mysql2.createConnection({
     database: 'bloodbank'
 });
 
-app.put('/approvedonrequest', (req, res) => {
-    const status = req.body.status;
-    const amount = req.body.amount;
-    const id = req.body.id;
-
-    db.query(
-        'UPDATE donation_requests SET status = ?, amount = ? WHERE donation_requests_id = ?',
-        [status, amount, id],
-        (err, result) => {
-            if(err) {
-                res.send({ err: err })
-            } else {
-                res.send(result);
-            }
-        }
-    )
-})
-
 app.put('/rejectdonrequest', (req, res) => {
     const status = req.body.status;
     const id = req.body.id;
