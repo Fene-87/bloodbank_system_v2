@@ -16,13 +16,12 @@ const Admin = () => {
     if(status === 'idle') {
       dispatch(fetchDonationRequests());
       dispatch(fetchBloodRequests());
-      console.log(donationRequestsList)
     }
-  }, [status, dispatch, donationRequestsList. bloodRequestsList]);
+  }, [status, dispatch]);
 
   const aPosCount = donationRequestsList
     .filter((item) => item.blood_group === 'A+')
-    .reduce((total, item) => total + item.amount, 0);
+    .reduce((total, item) => total + parseFloat(item.amount), 0);
 
   const aNegCount = donationRequestsList
     .filter((item) => item.blood_group === 'A-')

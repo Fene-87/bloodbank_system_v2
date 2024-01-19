@@ -6,12 +6,11 @@ const initialState = {
     status: 'idle',
 }
 
-const baseUrl = "http://localhost:3001/bloodrequests";
+const baseUrl = "http://localhost:3001/server/admin/bloodrequests";
 
 export const fetchBloodRequests = createAsyncThunk('bloodRequests/fetchBloodRequests', async () => {
     try {
         const response = await Axios.get(baseUrl);
-        console.log(response.data);
         return response.data;
         
     } catch (error) {

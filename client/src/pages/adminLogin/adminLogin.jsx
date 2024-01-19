@@ -16,7 +16,7 @@ const AdminLogin = () => {
 
     const onSubmit = (data) => {
         try {
-            Axios.post("http://localhost:3001/adminsignin", {
+            Axios.post("http://localhost:3001/server/auth/adminsignin", {
               email: data.email,
               password: data.password,
             }).then((response) => {

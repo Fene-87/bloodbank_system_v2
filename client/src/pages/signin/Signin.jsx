@@ -12,7 +12,7 @@ const Signin = () => {
 
     const onSubmit = (data) => {
       try {
-        Axios.post("http://localhost:3001/signin", {
+        Axios.post("http://localhost:3001/server/auth/signin", {
           email: data.email,
           password: data.password,
         }).then((response) => {
