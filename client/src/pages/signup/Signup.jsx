@@ -6,8 +6,6 @@ import { DevTool } from '@hookform/devtools';
 import './signup.css';
 
 const Signup = () => {
-    const role = "user";
-
     const navigate = useNavigate();
 
     const { register, control, handleSubmit, formState } = useForm();
@@ -15,29 +13,26 @@ const Signup = () => {
     
     const onSubmit = (data) => {
         try {
-            Axios.post("http://localhost:3001/server/auth/create", {
+            Axios.post("http://localhost:8000/server/auth/create", {
+              firstName: data.firstName,
+              lastName: data.lastName,
               userName: data.userName,
-              email: data.email,
-              age: data.age,
-              bloodGroup: data.bloodType,
-              password: data.password,
-              contactNumber: data.contactNumber,
               nationalId: data.nationalId,
-              address: data.address,
+              email: data.email,
+              password: data.password,
+              bloodType: data.bloodType,
+              age: data.age,
+              contactNumber: data.contactNumber,
               gender: data.gender,
-              diseases: data.diseases,
-              role: role,
             }).then(() => {
-              console.log('Successfully registered');
+              console.log('Successfully registered', data);
               navigate('/')
             });
         } catch (error) {
             console.log(error);
-        }
-        
+        }  
     }
     
-
     return (
         <div className='signup-container'>
             <form onSubmit={handleSubmit(onSubmit)} noValidate className='signup-form-bg'>
@@ -47,6 +42,44 @@ const Signup = () => {
                     <NavLink to='/signin' className="signup-navlink">
                       <h1 className='signin-header-dark'>Sign In</h1>
                     </NavLink>
+                  </div>
+
+                  <div className='reg-input-container'>
+                    <label className='reg-label'>FIRST NAME:</label>
+                    <div className='input-div'>
+                      <input
+                        type="text"
+                        id="firstname"
+                        {...register("firstName", {
+                          required: {
+                            value: true,
+                            message: "Field cannot be blank!",
+                          }
+                        })}
+                        placeholder='First Name'
+                        className='reg-input'
+                      />
+                      <p className='error-message'>{errors.firstName?.message}</p>
+                    </div>
+                  </div>
+
+                  <div className='reg-input-container'>
+                    <label className='reg-label'>LAST NAME:</label>
+                    <div className='input-div'>
+                      <input
+                        type="text"
+                        id="lastname"
+                        {...register("lastName", {
+                          required: {
+                            value: true,
+                            message: "Field cannot be blank!",
+                          }
+                        })}
+                        placeholder='Last Name'
+                        className='reg-input'
+                      />
+                      <p className='error-message'>{errors.lastName?.message}</p>
+                    </div>
                   </div>
 
                   <div className='reg-input-container'>
@@ -65,101 +98,6 @@ const Signup = () => {
                         className='reg-input'
                       />
                       <p className='error-message'>{errors.userName?.message}</p>
-                    </div>
-                  </div>
-
-                  <div className='reg-input-container'>
-                    <label className='reg-label'>EMAIL:</label>
-                    <div className='input-div'>
-                      <input
-                        type="email"
-                        id="email"
-                        {...register("email", {
-                          required: {
-                            value: true,
-                            message: "Field cannot be blank!",
-                          }
-                        })}
-                        placeholder='Email'
-                        className='reg-input'
-                      />
-                      <p className='error-message'>{errors.email?.message}</p>
-                    </div>
-                  </div>
-
-                  <div className='reg-input-container'>
-                    <label className='reg-label'>AGE:</label>
-                    <div className='input-div'>
-                      <input
-                        type="number"
-                        id="age"
-                        {...register("age", {
-                          required: {
-                            value: true,
-                            message: "Field cannot be blank!",
-                          }
-                        })}
-                        placeholder='Age'
-                        className='reg-input'
-                      />
-                      <p className='error-message'>{errors.age?.message}</p>
-                    </div>
-                  </div>
-
-                  <div className='reg-input-container'>
-                    <label className='reg-label'>BLOOD TYPE:</label>
-                    <div className='input-div'>
-                      <input
-                        type="text"
-                        id="bloodtype"
-                        {...register("bloodType", {
-                          required: {
-                            value: true,
-                            message: "Field cannot be blank!",
-                          }
-                        })}
-                        placeholder='Blood Type'
-                        className='reg-input'
-                      />
-                      <p className='error-message'>{errors.bloodType?.message}</p>
-                    </div>
-                  </div>
-
-                  <div className='reg-input-container'>
-                    <label className='reg-label'>PASSWORD:</label>
-                    <div className='input-div'>
-                      <input
-                        type="text"
-                        id="password"
-                        {...register("password", {
-                          required: {
-                            value: true,
-                            message: "Field cannot be blank!",
-                          }
-                        })}
-                        placeholder='Password'
-                        className='reg-input'
-                      />
-                      <p className='error-message'>{errors.password?.message}</p>
-                    </div>
-                  </div>
-
-                  <div className='reg-input-container'>
-                    <label className='reg-label'>CONTACT NUMBER:</label>
-                    <div className='input-div'>
-                      <input 
-                        type="text"
-                        id="contact-number"
-                        {...register("contactNumber", {
-                          required: {
-                            value: true,
-                            message: "Field cannot be blank!",
-                          }
-                        })}
-                        placeholder='Contact Number'
-                        className='reg-input'
-                      />
-                      <p className='error-message'>{errors.contactNumber?.message}</p>
                     </div>
                   </div>
 
@@ -183,21 +121,97 @@ const Signup = () => {
                   </div>
 
                   <div className='reg-input-container'>
-                    <label className='reg-label'>ADDRESS:</label>
+                    <label className='reg-label'>EMAIL:</label>
                     <div className='input-div'>
                       <input
-                        type="text"
-                        id="address"
-                        {...register("address", {
+                        type="email"
+                        id="email"
+                        {...register("email", {
                           required: {
                             value: true,
                             message: "Field cannot be blank!",
                           }
                         })}
-                        placeholder='Address'
+                        placeholder='Email'
                         className='reg-input'
                       />
-                      <p className='error-message'>{errors.address?.message}</p>
+                      <p className='error-message'>{errors.email?.message}</p>
+                    </div>
+                  </div>
+
+                  <div className='reg-input-container'>
+                    <label className='reg-label'>PASSWORD:</label>
+                    <div className='input-div'>
+                      <input
+                        type="text"
+                        id="password"
+                        {...register("password", {
+                          required: {
+                            value: true,
+                            message: "Field cannot be blank!",
+                          }
+                        })}
+                        placeholder='Password'
+                        className='reg-input'
+                      />
+                      <p className='error-message'>{errors.password?.message}</p>
+                    </div>
+                  </div>
+
+                  <div className='reg-input-container'>
+                    <label className='reg-label'>BLOOD TYPE:</label>
+                    <div className='input-div'>
+                      <input
+                        type="text"
+                        id="bloodtype"
+                        {...register("bloodType", {
+                          required: {
+                            value: true,
+                            message: "Field cannot be blank!",
+                          }
+                        })}
+                        placeholder='Blood Type'
+                        className='reg-input'
+                      />
+                      <p className='error-message'>{errors.bloodType?.message}</p>
+                    </div>
+                  </div>
+
+                  <div className='reg-input-container'>
+                    <label className='reg-label'>AGE:</label>
+                    <div className='input-div'>
+                      <input
+                        type="number"
+                        id="age"
+                        {...register("age", {
+                          required: {
+                            value: true,
+                            message: "Field cannot be blank!",
+                          }
+                        })}
+                        placeholder='Age'
+                        className='reg-input'
+                      />
+                      <p className='error-message'>{errors.age?.message}</p>
+                    </div>
+                  </div> 
+
+                  <div className='reg-input-container'>
+                    <label className='reg-label'>CONTACT NUMBER:</label>
+                    <div className='input-div'>
+                      <input 
+                        type="text"
+                        id="contact-number"
+                        {...register("contactNumber", {
+                          required: {
+                            value: true,
+                            message: "Field cannot be blank!",
+                          }
+                        })}
+                        placeholder='Contact Number'
+                        className='reg-input'
+                      />
+                      <p className='error-message'>{errors.contactNumber?.message}</p>
                     </div>
                   </div>
 
@@ -220,24 +234,6 @@ const Signup = () => {
                     </div>
                   </div>
 
-                  <div className='reg-input-container'>
-                    <label className='reg-label'>DISEASES:</label>
-                    <div className='input-div'>
-                      <input
-                        type="text"
-                        id="diseases"
-                        {...register("diseases", {
-                          required: {
-                            value: true,
-                            message: "Field cannot be blank!",
-                          }
-                        })}
-                        placeholder='Any Diseases?'
-                        className='reg-input'
-                      />
-                      <p className='error-message'>{errors.diseases?.message}</p>
-                    </div>
-                  </div>
                   <button type='submit' className='register-btn'>Register</button>
                 </div>
             </form>

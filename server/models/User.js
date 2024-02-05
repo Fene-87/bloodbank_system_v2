@@ -48,4 +48,9 @@ const userSchema = mongoose.Schema({
         type: Boolean,
         default: false,
     },
+},
+{
+    timeStamps: true,
 })
+
+export default mongoose.model('User', userSchema);
